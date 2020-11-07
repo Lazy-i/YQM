@@ -3,23 +3,33 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lazyi.mapper.UserMapper">
+
+    <select id="getPrimayKey" resultType="int">
+        select userId from user order by userId desc limit 1
+    </select>
+
     <select id="queryUserList" resultType="User">
          select * from user
     </select>
 
-    <select id="selectUserById" resultType="User">
+    <select id="queryUserById" resultType="User">
           select * from user where userId = #{userId}
     </select>
 
+    <select id="queryUserByUserAccount" resultType="User">
+          select * from user where userAccount = #{userAccount}
+    </select>
+
     <insert id = "addUser" parameterType="User">
-        insert into user (userId,userName,userPassword) valuse (#{userId},#{userName},#{userPassword})
+        insert into user (userId,userName,userAccount,userPassword,isPlayer,isReferee,isFieldManager)
+        value (#{userId},#{userName},#{userAccount},#{userPassword},-1,-1,-1)
     </insert>
 
     <update id = "updateUser" parameterType="User">
         update user set userName=#{userName},userPassword=#{userPassword} where userId = #{userId}
     </update>
 
-    <delete id="deleteUser" parameterType="int">
-        delete from user where userId = #{userId}
+    <delete id="isDuplicate" parameterType="String">
+        select Count(*) from user where userAccount = #{userAccount} limit 1
     </delete>
 </mapper>

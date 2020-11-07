@@ -15,4 +15,8 @@ public class User {
     private int isPlayer;
     private int isReferee;
     private int isFieldManager;
+
+    public String getUserPassword() {
+        return userPassword;
+    }
 }
