@@ -50,10 +50,10 @@ public class UserController {
         return ExceptionCatch.exceptionCatch(userService, userAccount, userAccount);
     }
 
-    @RequestMapping(value = "/api/upDateUser", method = RequestMethod.GET)
-    public ResultBean updateUser(@RequestParam(value = "userAccount", required = true) String userAccount,
-                             @RequestParam(value = "userOldPassword",required = true) String userOldPassword,
-                             @RequestParam(value = "userNewPassword",required = true) String userNewPassword){
+    @RequestMapping(value = "/api/updateUserPassword", method = RequestMethod.GET)
+    public ResultBean updateUserPassword(@RequestParam(value = "userAccount", required = true) String userAccount,
+                                         @RequestParam(value = "userOldPassword",required = true) String userOldPassword,
+                                         @RequestParam(value = "userNewPassword",required = true) String userNewPassword){
 //        userMapper.updateUser(user);
         return ExceptionCatch.exceptionCatch(userService, userAccount, userAccount, userOldPassword, userNewPassword);
     }

@@ -32,18 +32,18 @@ public interface UserMapper {
     @ResultType(Integer.class)
     List<User> queryUserById(@Param("userId") Integer id);
 
+    @ResultType(Integer.class)
+    int isPasswordRight(@Param("userAccount") String userAccount, @Param("userOldPassword") String userOldPassword);
 
     List<User> queryUserByUserAccount(@Param("userAccount") String userAccount);
-
 
     void addUser(@Param("userId") int userId,
                  @Param("userName") String userName,
                  @Param("userAccount") String userAccount,
                  @Param("userPassword") String userPassword);
 
-    List<User> updateUser(@Param("userAccount") String userAccount,
-                          @Param("userOldPassword") String userOldPassword,
-                          @Param("userNewPassword")String userNewPassword);
+    void updateUserPassword(@Param("userAccount") String userAccount,
+                            @Param("userNewPassword")String userNewPassword);
 
 //    List<User> deleteUser(@Param("userId")Integer userId);
 
@@ -56,7 +56,23 @@ public interface UserMapper {
     @ResultType(Integer.class)
     int isDuplicate(@Param("userAccount") String userAccount);
 
+    void updateUser(@Param("userAccount")String userAccount,
+                    @Param("userPassword")String userPassword,
+                    @Param("isPlayer")int isPlayer,
+                    @Param("isReferee")int isReferee,
+                    @Param("isFieldManager")int isFieldManager);
 
+    void updateUserIsP(@Param("userAccount")String userAccount,
+                       @Param("userPassword")String userPassword,
+                       @Param("isPlayer")int isPlayer);
+
+    void updateUserIsR(@Param("userAccount")String userAccount,
+                       @Param("userPassword")String userPassword,
+                       @Param("isReferee")int isReferee);
+
+    void updateUserIsF(@Param("userAccount")String userAccount,
+                       @Param("userPassword")String userPassword,
+                       @Param("isFieldManager")int isFieldManager);
 
 }
 

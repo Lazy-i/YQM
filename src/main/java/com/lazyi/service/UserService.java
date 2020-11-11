@@ -13,7 +13,7 @@ public interface UserService extends Service{
 
     List<User> addUser(String userName, String userAccount,String userPassword) throws Exception;
 
-    List<User> updateUser(String userAccount,String userOldPassword, String userNewPassword) throws Exception;
+    List<User> updateUserPassword(String userAccount,String userOldPassword, String userNewPassword) throws Exception;
 
     List<User> deleteUser(Integer id) throws Exception;
 

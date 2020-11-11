@@ -25,11 +25,32 @@
         value (#{userId},#{userName},#{userAccount},#{userPassword},-1,-1,-1)
     </insert>
 
-    <update id = "updateUser" parameterType="User">
-        update user set userName=#{userName},userPassword=#{userPassword} where userId = #{userId}
+    <update id = "updateUserPassword" >
+        update user set userPassword=#{userNewPassword} where userAccount = #{userAccount}
     </update>
 
     <delete id="isDuplicate" parameterType="String">
         select Count(*) from user where userAccount = #{userAccount} limit 1
     </delete>
+
+    <select id="isPasswordRight">
+        select Count(*) from user where userAccount = #{userAccount} and userPassword = #{userOldPassword} limit 1
+    </select>
+
+    <update id="updateUser" parameterType="User">
+        update user set isPlayer=#{isPlayer},isReferee=#{isReferee},isFieldManager=#{isFieldManager}
+        where userAccount=#{userAccount} and userPassword=#{userPassword}
+    </update>
+
+    <update id="updateUserIsP" parameterType="User">
+        update user set isPlayer=#{isPlayer} where userAccount=#{userAccount} and userPassword=#{userPassword}
+    </update>
+
+    <update id="updateUserIsR" parameterType="User">
+        update user set isReferee=#{isReferee} where userAccount=#{userAccount} and userPassword=#{userPassword}
+    </update>
+
+    <update id="updateUserIsF" parameterType="User">
+        update user set isFieldManager=#{isFieldManager} where userAccount=#{userAccount} and userPassword=#{userPassword}
+    </update>
 </mapper>

@@ -41,9 +41,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> updateUser(String userAccount, String userOldPassword, String userNewPassword) throws Exception {
+    public List<User> updateUserPassword(String userAccount, String userOldPassword, String userNewPassword) throws Exception {
         List<User> users = login(userAccount, userOldPassword);
-        userMapper.updateUser(userAccount, userOldPassword, userNewPassword);
+        userMapper.updateUserPassword(userAccount, userNewPassword);
         return queryUserByUserAccount(userAccount);
     }
 
