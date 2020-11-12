@@ -40,7 +40,7 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public List<Player> addPlayer(String name, Integer telephoneNumber, Integer emergencyContactNumber, String userAccount, String userPassword) throws Exception {
-        int playerId = playerMapper.getPrimayKey() + 1;
+        int playerId = playerMapper.getPrimayKey(userAccount, userPassword);
         userMapper.updateUserIsP(userAccount,userPassword,playerId);
         playerMapper.addPlayer(playerId, name, telephoneNumber, emergencyContactNumber);
         return queryPlayerById(playerId);

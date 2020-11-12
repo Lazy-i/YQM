@@ -5,7 +5,7 @@
 <mapper namespace="com.lazyi.mapper.PlayerMapper">
 
     <select id="getPrimayKey" resultType="int">
-        select playerId from player order by playerId desc limit 1
+        select userId from user where userAccount=#{userAccount} and userPassword={userPassword}
     </select>
 
     <select id="queryPlayerById" resultType="Player">
@@ -28,6 +28,10 @@
 
     <update id="deletePlayer">
         update user set isPlayer=-1 where userAccount=#{userAccount} and userPassword=#{userPassword}
+    </update>
+
+    <update id="updatePlayerIsC">
+        update player set isCaptain=#{isCaptain} where playerId=#{playerId}
     </update>
 
 </mapper>

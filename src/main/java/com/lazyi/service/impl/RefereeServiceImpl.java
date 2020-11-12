@@ -40,7 +40,7 @@ public class RefereeServiceImpl implements RefereeService {
 
     @Override
     public List<Referee> addReferee(String name, Integer telephoneNumber, String refereeNumber, String userAccount, String userPassword) throws Exception {
-        int refereeId = refereeMapper.getPrimayKey() + 1;
+        int refereeId = refereeMapper.getPrimayKey(userAccount, userPassword);
         userMapper.updateUserIsR(userAccount, userPassword, refereeId);
         refereeMapper.addReferee(refereeId, name, telephoneNumber, refereeNumber);
         return queryRefereeById(refereeId);

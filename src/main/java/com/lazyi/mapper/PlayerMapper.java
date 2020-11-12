@@ -14,7 +14,8 @@ import java.util.List;
 public interface PlayerMapper {
 
     @ResultType(Integer.class)
-    Integer getPrimayKey();
+    Integer getPrimayKey(@Param("userAccount") String userAccount,
+                         @Param("userPassword") String userPassword);
 
     @ResultType(Integer.class)
     List<Player> queryPlayerById(@Param("playerId") Integer id);
@@ -35,4 +36,7 @@ public interface PlayerMapper {
 
     void  deletePlayer(@Param("userAccount") String userAccount,
                        @Param("userPassword") String userNewPassword);
+
+    void updatePlayerIsC(@Param("playerId") Integer playerId,
+                         @Param("isCaptain") Integer isCaptain);
 }

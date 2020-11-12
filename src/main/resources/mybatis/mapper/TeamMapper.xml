@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lazyi.mapper.TeamMapper">
+
+    <select id="getPrimayKey" resultType="int">
+        select teamId from team order by teamId desc limit 1
+    </select>
+
+    <select id="queryTeamById" resultType="Team">
+        select * from team where teamId=#{teamId}
+    </select>
+
+    <select id="queryTeamByCaptainId" resultType="Team">
+        select * from team where captainId = #{captainId}
+    </select>
+
+    <insert id="addTeam" parameterType="Team">
+        insert into team (teamId,teamName,captainId,captainTelephoneNumber)
+        value (#{teamId},#{teamName},#{captainId},#{captainTelephoneNumber})
+    </insert>
+
+    <update id="updateTeam" parameterType="Team">
+        update team set teamName=#{teamName},captainTelephoneNumber=#{captainTelephoneNumber}
+        where teamId=#{teamId} and captainId=#{captainId}
+    </update>
+
+
+
+</mapper>

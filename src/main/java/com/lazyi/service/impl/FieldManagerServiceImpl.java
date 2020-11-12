@@ -42,7 +42,7 @@ public class FieldManagerServiceImpl implements FieldManagerService {
 
     @Override
     public List<FieldManager> addFieldManager(String name, Integer telephoneNumber, String userAccount, String userPassword) throws Exception {
-        int fieldManagerId = fieldManagerMapper.getPrimayKey() + 1;
+        int fieldManagerId = fieldManagerMapper.getPrimayKey(userAccount, userPassword);
         userMapper.updateUserIsF(userAccount, userPassword, fieldManagerId);
         fieldManagerMapper.addFieldManager(fieldManagerId, name, telephoneNumber);
         return queryFieldManagerById(fieldManagerId);

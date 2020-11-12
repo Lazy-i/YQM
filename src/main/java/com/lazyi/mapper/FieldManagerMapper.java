@@ -14,7 +14,8 @@ import java.util.List;
 public interface FieldManagerMapper {
 
     @ResultType(Integer.class)
-    Integer getPrimayKey();
+    Integer getPrimayKey(@Param("userAccount") String userAccount,
+                         @Param("userPassword") String userPassword);
 
     @ResultType(Integer.class)
     List<FieldManager> queryFieldManagerById(@Param("fieldManagerId") Integer FieldManagerId);

@@ -12,5 +12,7 @@ public class Team {
 
     private int teamId;
     private String teamName;
-    private int captainId
+    private int captainId;
+    private int captainTelephoneNumber;
+
 }

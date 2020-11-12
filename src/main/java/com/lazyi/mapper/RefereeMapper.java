@@ -14,7 +14,8 @@ import java.util.List;
 public interface RefereeMapper {
 
     @ResultType(Integer.class)
-    Integer getPrimayKey();
+    Integer getPrimayKey(@Param("userAccount") String userAccount,
+                         @Param("userPassword") String userPassword);
 
     @ResultType(Integer.class)
     List<Referee> queryRefereeById(@Param("refereeId") Integer id);
