@@ -27,11 +27,11 @@ public class RefereeController {
 
     @RequestMapping(value = "/api/addReferee", method = RequestMethod.GET)
     public ResultBean addReferee(@RequestParam(value = "name", required = true) String name,
-                                 @RequestParam(value = "telephoneNumber", required = true) Integer telephoneNUmber,
+                                 @RequestParam(value = "telephoneNumber", required = true) Integer telephoneNumber,
                                  @RequestParam(value = "refereeNumber", required = true) String refereeNumber,
                                  @RequestParam(value = "userAccount", required = true) String userAccount,
                                  @RequestParam(value = "userPassword", required = true) String userPassword){
-        return ExceptionCatch.exceptionCatch(refereeService, userAccount, name, telephoneNUmber, refereeNumber, userAccount, userPassword);
+        return ExceptionCatch.exceptionCatch(refereeService, userAccount, name, telephoneNumber, refereeNumber, userAccount, userPassword);
     }
 
     @RequestMapping(value = "/api/updateReferee", method = RequestMethod.GET)

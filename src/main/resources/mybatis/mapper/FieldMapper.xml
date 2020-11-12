@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lazyi.mapper.FieldMapper">
+     <select id="getPrimayKey"  resultType="int">
+         select fieldId from field order by fieldId desc limit 1
+     </select>
+
+    <select id="queryFieldById" resultType="Field">
+        select * from field where fieldId=#{fieldId}
+    </select>
+
+    <select id="queryFieldByFieldManagerId" resultType="Field">
+        select * from field where fieldManagerId=#{fieldManagerId}
+    </select>
+
+    <insert id="addField" parameterType="Field">
+        insert into field (fieldId,fieldName,fieldSpace,openTime,fieldState,fieldManagerId)
+        value (#{fieldId},#{fieldName},#{fieldSpace},#{openTime},0,#{fieldManagerId})
+    </insert>
+
+    <update id="updateField" parameterType="Field">
+        update field set fieldName=#{fieldName},fieldSpace=#{fieldSpace},openTime=#{openTime},fieldState=#{fieldState}
+        where fieldId=#{fieldId} and fieldManagerId=#{fieldManagerId}
+    </update>
+
+    <update id="updateFieldState" parameterType="Field">
+        update field ste fieldState=#{fieldState} where fieldId=#{fieldId}
+    </update>
+
+</mapper>

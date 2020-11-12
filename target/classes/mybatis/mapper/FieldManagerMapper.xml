@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lazyi.mapper.FieldManagerMapper">
+
+    <select id="getPrimayKey" resultType="int">
+        select fieldManagerId from fieldManager order by fieldManagerId desc limit 1
+    </select>
+
+    <select id="queryFieldManagerById" resultType="FieldManager">
+        select * from fieldManager where fieldManagerId = #{fieldManagerId}
+    </select>
+
+    <select id="queryFieldManagerByUserAccount" resultType="FieldManager">
+        select * from fieldManager where fieldManagerId in (select isFieldManager from user where userAccount = #{userAccount})
+    </select>
+
+    <insert id="addFieldManager" parameterType="FieldManager">
+        insert into fieldManager (fieldManagerId, name, telephoneNumber)
+        value (#{fieldManagerId},#{name},#{telephoneNumber})
+    </insert>
+
+    <update id="updateFieldManager">
+        update fieldManager set name=#{name},telephoneNumber=#{telephoneNumber}
+        where fieldManagerId in (select isFieldManager from user where userAccount=#{userAccount} and userPassword=#{userPassword})
+    </update>
+
+    <update id="deleteFieldManager">
+        update user set isFieldManager=-1 where userAccount=#{userAccount} and userPassword=#{userPassword}
+    </update>
+
+</mapper>
