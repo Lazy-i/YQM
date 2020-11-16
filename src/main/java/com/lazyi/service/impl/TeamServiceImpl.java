@@ -2,6 +2,7 @@ package com.lazyi.service.impl;
 
 import com.lazyi.mapper.PlayerMapper;
 import com.lazyi.mapper.TeamMapper;
+import com.lazyi.mapper.TeamPlayerMapper;
 import com.lazyi.mapper.UserMapper;
 import com.lazyi.pojo.Player;
 import com.lazyi.pojo.Team;
@@ -23,6 +24,9 @@ public class TeamServiceImpl implements TeamService {
     @Autowired
     private PlayerMapper playerMapper;
 
+    @Autowired
+    private TeamPlayerMapper teamPlayerMapper;
+
 
     @Override
     public List<Team> queryTeamById(Integer id) throws Exception {
@@ -43,6 +47,7 @@ public class TeamServiceImpl implements TeamService {
         int teamId = teamMapper.getPrimayKey() + 1;
         teamMapper.addTeam(teamId,teamName,captainId, captainTelephoneNumber);
         playerMapper.updatePlayerIsC(captainId, teamId);
+        teamPlayerMapper.playerAddTeam(captainId, teamId);
         return queryTeamById(teamId);
     }
 
