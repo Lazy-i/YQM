@@ -79,3 +79,117 @@ function quit_login() {
 			});
 		});
 	}
+
+	function register_to_player(request_url,user) {
+		// mui.init();
+		// mui.plusReady(function() {
+		// 	var self = plus.webview.currentWebview();
+		// 	var user = self.user;
+		// 	// var s ="";
+	
+		// 	// for (var p in user) {
+		// 	// 	s= s+"n "+p+": "+user[p];
+		// 	// }
+		// 	// mui.toast(s);
+		// 	var isbanmail_url = request_url + 'EmailFindByUserAccount?userAccount=' + user.userAccount;
+		// 	// alert(search_url);
+		// 	mui.ajax({
+		// 		type: 'GET',
+		// 		url: isbanmail_url,
+		// 		timeout: 10000,
+		// 		dataType: "json",
+		// 		success: function(data) {
+	
+		// 			if (data.data != null) {
+		// 				var dev_data = new Array();
+		// 				dev_data = data.data;
+		// 				if(dev_data.length == 0){
+		// 					to_email(user);
+		// 				}else{
+		// 					to_undoemail(user);
+		// 				}
+						
+		// 			}
+		// 		},
+		// 		error: function(xhr, type, errorThrown) {
+		// 			mui.toast("服务器内部出错！");
+		// 		}
+		// 	});
+		// });
+	}
+
+	function register_to_judge(request_url,user) {
+		// mui.init();
+		// mui.plusReady(function() {
+		// 	var self = plus.webview.currentWebview();
+		// 	var user = self.user;
+		// 	// var s ="";
+	
+		// 	// for (var p in user) {
+		// 	// 	s= s+"n "+p+": "+user[p];
+		// 	// }
+		// 	// mui.toast(s);
+		// 	var isbanmail_url = request_url + 'EmailFindByUserAccount?userAccount=' + user.userAccount;
+		// 	// alert(search_url);
+		// 	mui.ajax({
+		// 		type: 'GET',
+		// 		url: isbanmail_url,
+		// 		timeout: 10000,
+		// 		dataType: "json",
+		// 		success: function(data) {
+	
+		// 			if (data.data != null) {
+		// 				var dev_data = new Array();
+		// 				dev_data = data.data;
+		// 				if(dev_data.length == 0){
+		// 					to_email(user);
+		// 				}else{
+		// 					to_undoemail(user);
+		// 				}
+						
+		// 			}
+		// 		},
+		// 		error: function(xhr, type, errorThrown) {
+		// 			mui.toast("服务器内部出错！");
+		// 		}
+		// 	});
+		// });
+	}
+
+	function register_to_manager(request_url,user) {
+		// mui.init();
+		// mui.plusReady(function() {
+		// 	var self = plus.webview.currentWebview();
+		// 	var user = self.user;
+		// 	// var s ="";
+	
+		// 	// for (var p in user) {
+		// 	// 	s= s+"n "+p+": "+user[p];
+		// 	// }
+		// 	// mui.toast(s);
+		// 	var isbanmail_url = request_url + 'EmailFindByUserAccount?userAccount=' + user.userAccount;
+		// 	// alert(search_url);
+		// 	mui.ajax({
+		// 		type: 'GET',
+		// 		url: isbanmail_url,
+		// 		timeout: 10000,
+		// 		dataType: "json",
+		// 		success: function(data) {
+	
+		// 			if (data.data != null) {
+		// 				var dev_data = new Array();
+		// 				dev_data = data.data;
+		// 				if(dev_data.length == 0){
+		// 					to_email(user);
+		// 				}else{
+		// 					to_undoemail(user);
+		// 				}
+						
+		// 			}
+		// 		},
+		// 		error: function(xhr, type, errorThrown) {
+		// 			mui.toast("服务器内部出错！");
+		// 		}
+		// 	});
+		// });
+	}
