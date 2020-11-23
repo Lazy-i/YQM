@@ -28,20 +28,20 @@ function load_xian_my() {
 	});
 }
 
-function to_myequ(user) {
+function to_myplayer(user) {
 	mui.init();
 	mui.openWindow({
-		url: 'myequipment.html',
+		url: 'myplayer.html',
 		extras: {
 			user: user,
 		}
 	});
 }
 
-function to_myapp(user) {
+function to_myfield(user) {
 	mui.init();
 	mui.openWindow({
-		url: 'apply.html',
+		url: 'myfield.html',
 		extras: {
 			user: user,
 		}
@@ -115,10 +115,10 @@ function to_checkEquipment(user) {
 	});
 }
 
-function to_follow(user) {
+function to_myteam(user) {
 	mui.init();
 	mui.openWindow({
-		url: 'follow.html',
+		url: 'myteam.html',
 		extras: {
 			user: user,
 		}
