@@ -35,15 +35,15 @@
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title">填写设备详情</h1>
+			<h1 class="mui-title">填写约球申请</h1>
 		</header>
 		<div class="mui-content" style="margin-top:20px;"></div>
 
 		<form class="mui-input-group">
 			<ul class="mui-table-view">
 				<li class="mui-table-view-cell mui-collapse">
-					<label>名称</label>
-					<a class="mui-navigate-right" href="#" style="position: absolute;top:2px;left:31%;"><input id="dev_name" type="text" class="mui-input-clear" placeholder="请输入设备名称"></a>
+					<label>球队名称</label>
+					<a class="mui-navigate-right" href="#" style="position: absolute;top:2px;left:31%;"><input id="dev_name" type="text" class="mui-input-clear" placeholder=""></a>
 					<div class="mui-collapse-content">
 						<p>
 							<ul class="mui-table-view" style="top:-15px; margin-left: 20%;">
@@ -67,8 +67,8 @@
 			</div> -->
 			<ul class="mui-table-view">
 				<li class="mui-table-view-cell mui-collapse">
-					<label>类型</label>
-					<a class="mui-navigate-right" href="#" style="position: absolute;top:2px;left:31%;"><input id="dev_type" type="text" class="mui-input-clear" placeholder="请输入设备类型"></a>
+					<label>场地</label>
+					<a class="mui-navigate-right" href="#" style="position: absolute;top:2px;left:31%;"><input id="dev_type" type="text" class="mui-input-clear" placeholder="请输入场地信息"></a>
 					<div class="mui-collapse-content">
 						<p>
 							<ul class="mui-table-view" style="top:-15px; margin-left: 20%;">
@@ -86,21 +86,53 @@
 					</div>
 				</li>
 			</ul>
-			<!-- <div class="mui-input-row">
-				<label>类型</label>
-				<input id="dev_type" type="text" class="mui-input-clear" placeholder="请输入设备类型">
-			</div> -->
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-collapse">
+					<label>是否需要裁判员</label>
+					<a class="mui-navigate-right" href="#" style="position: absolute;top:2px;left:31%;"><input id="dev_type111" type="text" class="mui-input-clear" placeholder=""></a>
+					<div class="mui-collapse-content">
+						<p>
+							<ul class="mui-table-view" style="top:-15px; margin-left: 20%;">
+									<li onclick="diy_input('dev_type','type_1')" class="mui-table-view-cell">
+					                    是
+									</li>
+									<li onclick="diy_input('dev_type','type_2')" class="mui-table-view-cell">
+										否
+									</li>
+								</ul>
+						</p>
+					</div>
+				</li>
+			</ul>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-collapse">
+					<label>是否需要教练员</label>
+					<a class="mui-navigate-right" href="#" style="position: absolute;top:2px;left:31%;"><input id="dev_type11" type="text" class="mui-input-clear" placeholder=""></a>
+					<div class="mui-collapse-content">
+						<p>
+							<ul class="mui-table-view" style="top:-15px; margin-left: 20%;">
+									<li onclick="diy_input('dev_type','type_1')" class="mui-table-view-cell">
+					                    是
+									</li>
+									<li onclick="diy_input('dev_type','type_2')" class="mui-table-view-cell">
+										否
+									</li>
+								</ul>
+						</p>
+					</div>
+				</li>
+			</ul>
 			<div class="mui-input-row">
-				<label>数量</label>
-				<input id="dev_num" type="text" class="mui-input-clear" placeholder="请输入设备数量">
+				<label>人数</label>
+				<input id="dev_num" type="text" class="mui-input-clear" placeholder="请输入需要人数">
 			</div>
-			<div class="mui-input-row">
+			<!-- <div class="mui-input-row">
 				<label>价格(元)</label>
 				<input id="dev_prise" type="text" class="mui-input-clear" placeholder="请输入设备价格">
-			</div>
+			</div> -->
 			<div class="mui-input-row">
-				<label>保质期(天)</label>
-				<input id="dev_period" type="text" class="mui-input-clear" placeholder="请输入设备保质期">
+				<label>时间</label>
+				<input id="dev_period" type="text" class="mui-input-clear" placeholder="请输入时间">
 			</div>
 			<!-- <div class="mui-input-row">
 			    <label>经办人</label>
@@ -131,7 +163,7 @@
 					</div>
 				</li>
 			</ul> -->
-			<div class="mui-input-row">
+			<!-- <div class="mui-input-row">
 				<label>设备权限</label>
 				<select id="dev_auth" class="mui-btn mui-btn-block" style="left: -16%; width: 200px;">
 									<option value="item-0">请选择设备权限</option>
@@ -139,8 +171,8 @@
 									<option value="2">中级</option>
 									<option value="3">高级</option>
 								</select>
-				<!-- <input id="dev_auth" type="text" class="mui-input-clear" placeholder="请输入设备权限"> -->
-			</div>
+				<input id="dev_auth" type="text" class="mui-input-clear" placeholder="请输入设备权限">
+			</div> -->
 		</form>
 		<button onclick="finish(request_url)" type="button" class="mui-btn mui-btn-success" style="margin-left: 30px; margin-top: 10px; width: 150px;">提交</button>
 		<button onclick="quit()" type="button" class="mui-btn mui-btn-danger" style="margin-top: 10px; margin-left: 20px; width: 150px;">取消</button>
