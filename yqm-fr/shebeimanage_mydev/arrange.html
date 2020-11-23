@@ -39,7 +39,7 @@
 
 	<body onload="load_dai(request_url)">
 		<header class="mui-bar mui-bar-nav">
-			<h1 class="mui-title">待办</h1>
+			<h1 class="mui-title">约球信息</h1>
 		</header>
 
 		<div class="mui-content" style="background-color: #AAAAFF; height: 190px;  width: 50%;"></div>
@@ -49,19 +49,19 @@
 
 
 		<img src="images/zi33.png" style="position: absolute; margin-top: -560px; margin-left: 10%; width:100px; height:100px">
-		<button onclick="to_search(user)" type="button" style="position: absolute; margin-top: -574px; width: 50%; height: 150px;  background: transparent; font-size:16px; color: #ffffff; line-height: 260px;">租借设备</button>
+		<button onclick="to_search(user)" type="button" style="position: absolute; margin-top: -574px; width: 50%; height: 150px;  background: transparent; font-size:16px; color: #ffffff; line-height: 260px;">布告板</button>
 
 
 		<img src="images/zi18.png" style="position: absolute; margin-top: -560px; margin-left: 62%; width:100px; height:100px">
-		<button onclick="to_buymore(user)" type="button" style="position: absolute; margin-top: -574px; margin-left: 50%; width: 50%; height: 150px;  background: transparent; font-size:16px; color: #ffffff; line-height: 260px;">购置设备</button>
+		<button onclick="to_buymore(user)" type="button" style="position: absolute; margin-top: -574px; margin-left: 50%; width: 50%; height: 150px;  background: transparent; font-size:16px; color: #ffffff; line-height: 260px;">开始约球</button>
 
 		<!-- <h1 style="margin-left: 10px; margin-top: -410px;font-size: 16px;">待办事项</h1> -->
 		<div id="bao_arrange"></div>
 		<script type="text/html" id="temp_arrange">
-			<h1 style="margin-left: 10px; margin-top: -410px;font-size: 16px;">待办事项</h1>
+			<h1 style="margin-left: 10px; margin-top: -410px;font-size: 16px;">所在球队约球信息</h1>
 			<ul class="mui-table-view">
 			<% if((bao_list.length==0)&&(buy_list.length==0)&&(xiu_list.length==0)) {%>
-				<li class="mui-table-view-cell">您当前暂无待办事项!</li>
+				<li class="mui-table-view-cell">您当前暂无所属球队约球!</li>
 			<% } %>
 			<% for(var i = 0;i < buy_list.length;i++){ %>
 				<div class="mui-table-view"><!-- 分配设备管理员 -->
@@ -103,7 +103,7 @@
 			</a>
 			<a class="mui-tab-item" href="#tabbar-with-search" style="touch-action: none;" onclick="to_arrange(user)">
 				<span class="mui-icon mui-icon-list"></span>
-				<span class="mui-tab-label">待办</span>
+				<span class="mui-tab-label">约球</span>
 			</a>
 			<a class="mui-tab-item" href="#tabbar-with-person" style="touch-action: none;" onclick="to_mine(user)">
 				<span class="mui-icon mui-icon-person"></span>
