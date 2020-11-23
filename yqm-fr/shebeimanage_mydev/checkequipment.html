@@ -13,8 +13,8 @@
 		<script type="text/javascript">
 			mui.init()
 		</script>
-		<iframe src="myEquipmentVis.html" width="100%" height="600" scrolling="auto" frameborder="no" style="margin-top: 45px;"></iframe>
-		<iframe src="myEquipmentVis1.html" width="100%" height="600" scrolling="auto" frameborder="no" style="margin-top: -200px;"></iframe>
+		<!-- <iframe src="myEquipmentVis.html" width="100%" height="600" scrolling="auto" frameborder="no" style="margin-top: 45px;"></iframe>
+		<iframe src="myEquipmentVis1.html" width="100%" height="600" scrolling="auto" frameborder="no" style="margin-top: -200px;"></iframe> -->
 		<script type="text/html" id="temp_check">
 			<ul class="mui-table-view" style="margin-top: -100px;">
 		<% for(var i = 0;i < list.length;i++){ %>
@@ -45,11 +45,62 @@
 	<body onload="check_equ(request_url)">
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title">设备监控</h1>
+			<h1 class="mui-title">申请信息</h1>
 		</header>
 		<div id="c_euq" class="mui-content" style="margin-top:-300px;"></div>
 		<script type="text/javascript">
 			var request_url = localStorage.getItem('request_url');
+		</script>
+		
+
+		<script type="text/html" id="temp_arrange">
+			<h1 style="margin-left: 10px; margin-top: -410px;font-size: 16px;">所在球队约球信息</h1>
+			<ul class="mui-table-view">
+			<% if((bao_list.length==0)&&(buy_list.length==0)&&(xiu_list.length==0)) {%>
+				<li class="mui-table-view-cell">您当前暂无球队约球申请!</li>
+			<% } %>
+			<% if((bao_list.length==0)&&(buy_list.length==0)&&(xiu_list.length==0)) {%>
+				<li class="mui-table-view-cell">比赛时间：</li>
+			<% } %>
+			<% if((bao_list.length==0)&&(buy_list.length==0)&&(xiu_list.length==0)) {%>
+				<li class="mui-table-view-cell">比赛地点：</li>
+			<% } %>
+			<% if((bao_list.length==0)&&(buy_list.length==0)&&(xiu_list.length==0)) {%>
+				<li class="mui-table-view-cell"></li>
+			<% } %>
+			<% if((bao_list.length==0)&&(buy_list.length==0)&&(xiu_list.length==0)) {%>
+				<li class="mui-table-view-cell">是否需要人数：</li>
+			<% } %>
+			<!-- <% for(var i = 0;i < buy_list.length;i++){ %>
+				<div class="mui-table-view">
+					<li class="mui-table-view-cell"><%= buy_list[i].tokenId%></li>
+						<button style="position: absolute;top:6px;right:44%;height:28px;line-height: 15px;" onclick="more_arr(<%=buy_list[i].devId%>,request_url,1)">更多</button>
+						<select id="sel_manager-<%=i%>" class="mui-btn" style="position: absolute;top:2px;right: 18%;height:33px;line-height: 15px;width: 95px;">
+							<option>选择管理员</option>
+							<% for(var j = 0;j < manager_list.length;j++){ %>
+								<option value="<%= manager_list[j].userAccount%>"><%= manager_list[j].userAccount%></option>
+							<% } %>
+						</select>
+						<button style="position: absolute;top:6px;right:3%;height:28px;line-height: 15px;" onclick="who_manager(<%=i%>,<%= buy_list[i].logId%>,request_url)">确认</button>
+				</div>
+			<% } %>
+			<% for(var i = 0;i < bao_list.length;i++){ %>
+				<div class="mui-table-view">
+					<li class="mui-table-view-cell"><%= bao_list[i].tokenId%></li>
+						<button style="position: absolute;top:6px;right:35%;height:28px;line-height: 15px;" onclick="more_arr(<%=bao_list[i].devId%>,request_url,0)">更多</button>
+						<button style="position: absolute;top:6px;right:19%;height:28px;line-height: 15px;" onclick="yes_arrange(<%= bao_list[i].logId%>,request_url,0)">确认</button>
+						<button style="position: absolute;top:6px;right:3%;height:28px;line-height: 15px;" onclick="no_arrange(<%= bao_list[i].logId%>,request_url,0)">驳回</button>
+				</div>
+			<% } %>	
+			<% for(var i = 0;i < xiu_list.length;i++){ %>
+				<div class="mui-table-view">
+					<li class="mui-table-view-cell"><%= xiu_list[i].tokenId%></li>
+						<button style="position: absolute;top:6px;right:35%;height:28px;line-height: 15px;" onclick="more_arr(<%=xiu_list[i].devId%>,request_url,2)">更多</button>
+						<button style="position: absolute;top:6px;right:19%;height:28px;line-height: 15px;" onclick="yes_arrange(<%= xiu_list[i].logId%>,request_url,1)">确认</button>
+						<button style="position: absolute;top:6px;right:3%;height:28px;line-height: 15px;" onclick="no_arrange(<%= xiu_list[i].logId%>,request_url,1)">驳回</button>
+				</div>
+			<% } %>	 -->
+			</ul>
 		</script>
 	</body>
 
