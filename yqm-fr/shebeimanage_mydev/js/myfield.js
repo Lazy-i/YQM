@@ -9,7 +9,6 @@ function myfield(request_url) {
 		// 	s= s+"n "+p+": "+user[p];
 		// }
 		// mui.toast(s);
-		alert(user.isFieldManger);
 		if(user.isFieldManager==-1){
 			 alert("您当前不是场地负责人，请前往'我的'界面注册成为场地负责人！");
 		}

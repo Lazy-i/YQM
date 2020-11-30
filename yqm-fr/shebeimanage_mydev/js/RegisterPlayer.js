@@ -32,7 +32,7 @@ function register_m(request_url) {
         mui.plusReady(function() {
             var self = plus.webview.currentWebview();
             var user = self.user;
-            var registerurl = request_url + '/api/addPlayer?name=' + username 
+            var registerurl = request_url + 'addPlayer?name=' + username 
                     + '&telephoneNumber=' + refereeNumber 
                     + '&emergencyContactNumber' + EmergencyTelephone
                     + '&userAccount' + user.userAccount
