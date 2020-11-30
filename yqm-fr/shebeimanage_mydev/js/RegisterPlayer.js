@@ -29,32 +29,32 @@ function register_m(request_url) {
         mui.toast("请填写紧急联系电话！");
         return;
     } else {
-        var registerurl = request_url + '/api/addPlayer?name=' + username + '&telephoneNumber=' + Telephone + '&emergencyContactNumber=' + EmergencyTelephone;
-            mui.plusReady(function() {
-                mui.ajax({
-                    type: 'GET',
-                    url: registerurl,
-                    timeout: 10000,
-                    success: function(data) {
-                        // var s ="";
-
-                        // for (var p in data) {
-                        // 	s= s+"n "+p+": "+data[p];
-                        // }
-                        // alert(s);
-                        if (data.code == 0) {
-                            mui.toast(data.message);
-                            mui.openWindow({
-                                url:'mine.html'
-                            });
-                        } else {
-                            mui.toast(data.message);
-                        }
-                    },
-                    error: function(xhr, type, errorThrown) {
-                        mui.toast("服务器内部出错！");
+        mui.plusReady(function() {
+            var self = plus.webview.currentWebview();
+            var user = self.user;
+            var registerurl = request_url + '/api/addPlayer?name=' + username 
+                    + '&telephoneNumber=' + refereeNumber 
+                    + '&emergencyContactNumber' + EmergencyTelephone
+                    + '&userAccount' + user.userAccount
+                    + '&userPassword' + user.userPassword;
+            mui.ajax({
+                type: 'GET',
+                url: registerurl,
+                timeout: 10000,
+                success: function(data) {
+                    if (data.code == 0) {
+                        mui.toast(data.message);
+                        mui.openWindow({
+                            url:'mine.html'
+                        });
+                    } else {
+                        mui.toast(data.message);
                     }
-                });
+                },
+                error: function(xhr, type, errorThrown) {
+                    mui.toast("服务器内部出错！");
+                }
             });
+        });
     }
 }
