@@ -1,8 +1,8 @@
 function finish(request_url) {
     mui.init();
     var Telephone = document.getElementById("Telephone").value;
-    var code = document.getElementById("code").value;
-    var username = document.getElementById("PlayerNmae").value;
+    var code = document.getElementById("Code").value;
+    var username = document.getElementById("name").value;
     var Check_Emer_Tele = is_num(code);
     var Check_Tele = is_num(Telephone);
 
@@ -24,7 +24,7 @@ function finish(request_url) {
             var self = plus.webview.currentWebview();
             var user = self.user;
             var registerurl = request_url + 'addReferee?name=' + username 
-                    + '&telephoneNumber=' + refereeNumber 
+                    + '&telephoneNumber=' + Telephone 
                     + '&refereeNumber=' + code 
                     + '&userAccount' + user.userAccount
                     + '&userPassword' + user.userPassword;

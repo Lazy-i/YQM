@@ -2,8 +2,8 @@
 function finish(request_url) {
     mui.init();
     var Telephone = document.getElementById("Telephone").value;
-    var EmergencyTelephone = document.getElementById("EmergencyTelephone").value;
-    var username = document.getElementById("PlayerNmae").value;
+    // var EmergencyTelephone = document.getElementById("EmergencyTelephone").value;
+    var username = document.getElementById("name").value;
     var Check_Emer_Tele = is_num(EmergencyTelephone);
     var Check_Tele = is_num(Telephone);
 
@@ -19,15 +19,15 @@ function finish(request_url) {
     } else if (Telephone.length == 0) {
         mui.toast("请填写联系电话！");
         return;
-    } else if (EmergencyTelephone.length == 0) {
-        mui.toast("请填写紧急联系电话！");
-        return;
+    // } else if (EmergencyTelephone.length == 0) {
+    //     mui.toast("请填写紧急联系电话！");
+    //     return;
     } else {
         mui.plusReady(function() {
             var self = plus.webview.currentWebview();
             var user = self.user;
             var registerurl = request_url + 'AddFieldManager?name=' + username 
-                    + '&telephoneNumber=' + refereeNumber 
+                    + '&telephoneNumber=' + Telephone 
                     + '&userAccount' + user.userAccount
                     + '&userPassword' + user.userPassword;
             mui.ajax({

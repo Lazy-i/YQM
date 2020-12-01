@@ -28,7 +28,7 @@ function finish(request_url) {
             var self = plus.webview.currentWebview();
             var user = self.user;
             var registerurl = request_url + 'addPlayer?name=' + username 
-                    + '&telephoneNumber=' + refereeNumber 
+                    + '&telephoneNumber=' + Telephone 
                     + '&emergencyContactNumber' + EmergencyTelephone
                     + '&userAccount' + user.userAccount
                     + '&userPassword' + user.userPassword;
