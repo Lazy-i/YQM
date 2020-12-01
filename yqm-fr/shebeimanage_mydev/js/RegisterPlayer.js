@@ -4,7 +4,7 @@ function finish(request_url) {
     mui.init();
     var Telephone = document.getElementById("Telephone").value;
     var EmergencyTelephone = document.getElementById("EmergencyTelephone").value;
-    var username = document.getElementById("PlayerNmae").value;
+    var username = document.getElementById("name").value;
     var Check_Emer_Tele = is_num(EmergencyTelephone);
     var Check_Tele = is_num(Telephone);
 
