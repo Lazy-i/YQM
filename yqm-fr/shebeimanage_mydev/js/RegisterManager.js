@@ -28,8 +28,8 @@ function finish(request_url) {
             var user = self.user;
             var registerurl = request_url + 'AddFieldManager?name=' + username 
                     + '&telephoneNumber=' + Telephone 
-                    + '&userAccount' + user.userAccount
-                    + '&userPassword' + user.userPassword;
+                    + '&userAccount=' + user.userAccount
+                    + '&userPassword=' + user.userPassword;
             mui.ajax({
                 type: 'GET',
                 url: registerurl,

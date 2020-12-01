@@ -29,9 +29,9 @@ function finish(request_url) {
             var user = self.user;
             var registerurl = request_url + 'addPlayer?name=' + username 
                     + '&telephoneNumber=' + Telephone 
-                    + '&emergencyContactNumber' + EmergencyTelephone
-                    + '&userAccount' + user.userAccount
-                    + '&userPassword' + user.userPassword;
+                    + '&emergencyContactNumber=' + EmergencyTelephone
+                    + '&userAccount=' + user.userAccount
+                    + '&userPassword=' + user.userPassword;
             mui.ajax({
                 type: 'GET',
                 url: registerurl,

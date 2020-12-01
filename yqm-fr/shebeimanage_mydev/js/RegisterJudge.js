@@ -26,8 +26,8 @@ function finish(request_url) {
             var registerurl = request_url + 'addReferee?name=' + username 
                     + '&telephoneNumber=' + Telephone 
                     + '&refereeNumber=' + code 
-                    + '&userAccount' + user.userAccount
-                    + '&userPassword' + user.userPassword;
+                    + '&userAccount=' + user.userAccount
+                    + '&userPassword=' + user.userPassword;
             mui.ajax({
                 type: 'GET',
                 url: registerurl,
