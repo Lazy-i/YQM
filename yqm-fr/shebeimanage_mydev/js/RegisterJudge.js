@@ -34,12 +34,12 @@ function finish(request_url) {
                 timeout: 10000,
                 success: function(data) {
                     if (data.code == 0) {
-                        mui.toast(data.message);
+                        mui.toast("注册成功！");
                         mui.openWindow({
                             url:'mine.html'
                         });
                     } else {
-                        mui.toast(data.message);
+                        mui.toast("注册失败！");
                     }
                 },
                 error: function(xhr, type, errorThrown) {
