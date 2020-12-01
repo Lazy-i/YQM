@@ -28,7 +28,11 @@ function finish(request_url) {
             var self = plus.webview.currentWebview();
             var user = self.user;
 <<<<<<< HEAD
+<<<<<<< HEAD
             var registerurl = request_url + '/addPlayer?name=' + username 
+=======
+            var registerurl = request_url + 'addPlayer?name=' + username 
+>>>>>>> d629022bd7c0fcae52486061efab16e737d6a0e9
 =======
             var registerurl = request_url + 'addPlayer?name=' + username 
 >>>>>>> d629022bd7c0fcae52486061efab16e737d6a0e9
