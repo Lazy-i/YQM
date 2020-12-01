@@ -1,11 +1,5 @@
-function to_register() {
-    mui.init();
-    mui.openWindow({
-        url: 'RegisterPlayer.html',
-    });
-}
 
-function register_m(request_url) {
+function finish(request_url) {
     mui.init();
     var Telephone = document.getElementById("Telephone").value;
     var EmergencyTelephone = document.getElementById("EmergencyTelephone").value;
@@ -32,7 +26,7 @@ function register_m(request_url) {
         mui.plusReady(function() {
             var self = plus.webview.currentWebview();
             var user = self.user;
-            var registerurl = request_url + '/api/AddFieldManager?name=' + username 
+            var registerurl = request_url + '/AddFieldManager?name=' + username 
                     + '&telephoneNumber=' + refereeNumber 
                     + '&userAccount' + user.userAccount
                     + '&userPassword' + user.userPassword;
@@ -56,4 +50,11 @@ function register_m(request_url) {
             });
         });
     }
+}
+
+function quit() {
+	mui.init();
+	mui.plusReady(function() {
+		mui.back();
+	});
 }

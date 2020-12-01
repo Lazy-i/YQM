@@ -9,8 +9,7 @@ function search_teamallplayer(request_url) {
 	mui.plusReady(function() {
 		var self = plus.webview.currentWebview();
 		var user = self.user;
-			
-		if(user.isplayer==-1){
+		if(user.isPlayer==-1){
 			 alert("您还未成为球员，请前往'我的'界面注册成为球员！");
 		}
 		// var s ="";
