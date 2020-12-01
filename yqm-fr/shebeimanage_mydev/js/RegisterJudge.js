@@ -23,7 +23,7 @@ function finish(request_url) {
         mui.plusReady(function() {
             var self = plus.webview.currentWebview();
             var user = self.user;
-            var registerurl = request_url + '/addReferee?name=' + username 
+            var registerurl = request_url + 'addReferee?name=' + username 
                     + '&telephoneNumber=' + refereeNumber 
                     + '&refereeNumber=' + code 
                     + '&userAccount' + user.userAccount
