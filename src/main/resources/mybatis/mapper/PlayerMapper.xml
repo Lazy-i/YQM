@@ -5,7 +5,7 @@
 <mapper namespace="com.lazyi.mapper.PlayerMapper">
 
     <select id="getPrimayKey" resultType="int">
-        select userId from user where userAccount=#{userAccount} and userPassword={userPassword}
+        select userId from user where userAccount=#{userAccount}
     </select>
 
     <select id="queryPlayerById" resultType="Player">
@@ -18,7 +18,7 @@
 
     <insert id="addPlayer" parameterType="Player">
         insert into player (playerId, name, telephoneNumber, emergencyContactNumber,isCaptain)
-        value (#{playerId},#{name},#{telephoneNumber},#{emergencyContactNumber},-1)
+        value (#{playerId},#{name},#{telephoneNumber},#{emergencyContactNumber},'-1')
     </insert>
 
     <update id="updatePlayer">
