@@ -8,6 +8,7 @@
 		<link href="css/mui.css" rel="stylesheet" />
 		<script src="js/mui.js"></script>
 		<script src="js/fun.js"></script>
+		<script src="js/template.js"></script>
 		<script src="js/buymore.js"></script>
 		<script type="text/javascript">
 			mui.init({
@@ -18,8 +19,18 @@
 				        mui.fire(list, 'refresh_a');
 				        //返回true,继续页面关闭逻辑
 				        return true;
-				    }
+				    },		
 			});
+			var user;
+			var team = new Array();
+			mui.plusReady(function() {
+				var self = plus.webview.currentWebview();
+				user = self.user;
+				
+				team = self.team;
+				
+			});			
+			
 			localStorage.setItem('request_url', 'http://81.70.31.152:8001/api/'); //前半部分固定URL
 		</script>
 		<script type="text/javascript">
@@ -30,6 +41,7 @@
 				});
 			}
 		</script>
+		
 	</head>
 
 	<body>
@@ -40,46 +52,56 @@
 		<div class="mui-content" style="margin-top:20px;"></div>
 
 		<form class="mui-input-group">
-			<ul class="mui-table-view">
+			
+			<!-- <div class="mui-input-row">
+				<label>名称</label>
+				<input id="dev_name" type="text" class="mui-input-clear" placeholder="请输入设备名称">
+			</div> -->
+			<!-- <ul class="mui-table-view">
 				<li class="mui-table-view-cell mui-collapse">
-					<label>球队名称</label>
-					<a class="mui-navigate-right" href="#" style="position: absolute;top:2px;left:31%;"><input id="dev_name" type="text" class="mui-input-clear" placeholder=""></a>
+					<label>球队id</label>
+					<a class="mui-navigate-right" href="#" style="position: absolute;top:2px;left:31%;"><input id="dev_teamName" type="text" class="mui-input-clear" placeholder="请输入场地信息"></a>
 					<div class="mui-collapse-content">
 						<p>
 							<ul class="mui-table-view" style="top:-15px; margin-left: 20%;">
-									<li onclick="diy_input('dev_name','dev_1')" class="mui-table-view-cell">
-					                    dev_1
+									<li onclick="diy_input('dev_teamName','100001')" class="mui-table-view-cell">
+					                    100001
 									</li>
-									<li onclick="diy_input('dev_name','dev_2')" class="mui-table-view-cell">
-										dev_2
+									<li onclick="diy_input('dev_teamName','10002')" class="mui-table-view-cell">
+										100002
 									</li>
-									<li onclick="diy_input('dev_name','dev_3')" class="mui-table-view-cell">
-										dev_3
+									<li onclick="diy_input('dev_teamName','100003')" class="mui-table-view-cell">
+										100003
 									</li>
 								</ul>
 						</p>
 					</div>
 				</li>
+			</ul> -->
+			<ul class="mui-table-view">
+				<!-- <li class="mui-table-view-cell mui-collapse">
+					<label>球队名称</label>
+					<a class="mui-navigate-right" href="#" style="position: absolute;top:2px;left:31%;"><input id="dev_teamName" type="text" class="mui-input-clear" placeholder="请输入球队名称1"></a>
+					<div class="mui-collapse-content">
+				
+					</div>
+				</li> -->
 			</ul>
-			<!-- <div class="mui-input-row">
-				<label>名称</label>
-				<input id="dev_name" type="text" class="mui-input-clear" placeholder="请输入设备名称">
-			</div> -->
 			<ul class="mui-table-view">
 				<li class="mui-table-view-cell mui-collapse">
 					<label>场地</label>
-					<a class="mui-navigate-right" href="#" style="position: absolute;top:2px;left:31%;"><input id="dev_type" type="text" class="mui-input-clear" placeholder="请输入场地信息"></a>
+					<a class="mui-navigate-right" href="#" style="position: absolute;top:2px;left:31%;"><input id="dev_fieldName" type="text" class="mui-input-clear" placeholder="请输入场地信息"></a>
 					<div class="mui-collapse-content">
 						<p>
 							<ul class="mui-table-view" style="top:-15px; margin-left: 20%;">
-									<li onclick="diy_input('dev_type','type_1')" class="mui-table-view-cell">
-					                    type_1
+									<li onclick="diy_input('dev_fieldName','丰台体育场')" class="mui-table-view-cell">
+					                    丰台体育场
 									</li>
-									<li onclick="diy_input('dev_type','type_2')" class="mui-table-view-cell">
-										type_2
+									<li onclick="diy_input('dev_fieldName','丰台足球场')" class="mui-table-view-cell">
+										丰台足球场
 									</li>
-									<li onclick="diy_input('dev_type','type_3')" class="mui-table-view-cell">
-										type_3
+									<li onclick="diy_input('dev_fieldName','工人体育场')" class="mui-table-view-cell">
+										工人体育场
 									</li>
 								</ul>
 						</p>
@@ -89,14 +111,14 @@
 			<ul class="mui-table-view">
 				<li class="mui-table-view-cell mui-collapse">
 					<label>是否需要裁判员</label>
-					<a class="mui-navigate-right" href="#" style="position: absolute;top:2px;left:31%;"><input id="dev_type111" type="text" class="mui-input-clear" placeholder=""></a>
+					<a class="mui-navigate-right" href="#" style="position: absolute;top:2px;left:31%;"><input id="dev_isNeedReferee" type="text" class="mui-input-clear" placeholder=""></a>
 					<div class="mui-collapse-content">
 						<p>
 							<ul class="mui-table-view" style="top:-15px; margin-left: 20%;">
-									<li onclick="diy_input('dev_type','type_1')" class="mui-table-view-cell">
+									<li onclick="diy_input('dev_isNeedReferee','1')" class="mui-table-view-cell">
 					                    是
 									</li>
-									<li onclick="diy_input('dev_type','type_2')" class="mui-table-view-cell">
+									<li onclick="diy_input('dev_isNeedReferee','0')" class="mui-table-view-cell">
 										否
 									</li>
 								</ul>
@@ -104,27 +126,10 @@
 					</div>
 				</li>
 			</ul>
-			<ul class="mui-table-view">
-				<li class="mui-table-view-cell mui-collapse">
-					<label>是否需要教练员</label>
-					<a class="mui-navigate-right" href="#" style="position: absolute;top:2px;left:31%;"><input id="dev_type11" type="text" class="mui-input-clear" placeholder=""></a>
-					<div class="mui-collapse-content">
-						<p>
-							<ul class="mui-table-view" style="top:-15px; margin-left: 20%;">
-									<li onclick="diy_input('dev_type','type_1')" class="mui-table-view-cell">
-					                    是
-									</li>
-									<li onclick="diy_input('dev_type','type_2')" class="mui-table-view-cell">
-										否
-									</li>
-								</ul>
-						</p>
-					</div>
-				</li>
-			</ul>
+			
 			<div class="mui-input-row">
 				<label>人数</label>
-				<input id="dev_num" type="text" class="mui-input-clear" placeholder="请输入需要人数">
+				<input id="dev_playerNum" type="text" class="mui-input-clear" placeholder="请输入需要人数">
 			</div>
 			<!-- <div class="mui-input-row">
 				<label>价格(元)</label>
@@ -132,7 +137,7 @@
 			</div> -->
 			<div class="mui-input-row">
 				<label>时间</label>
-				<input id="dev_period" type="text" class="mui-input-clear" placeholder="请输入时间">
+				<input id="dev_time" type="text" class="mui-input-clear" placeholder="请输入时间">
 			</div>
 			<!-- <div class="mui-input-row">
 			    <label>经办人</label>

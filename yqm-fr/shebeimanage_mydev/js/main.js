@@ -48,13 +48,49 @@ function to_myfield(user) {
 	});
 }
 
-function to_arrange(user) {
+function to_arrange(user,request_url) {
 	mui.init();
-	mui.openWindow({
-		url: 'arrange.html',
-		extras: {
-			user: user,
-		},
+	var get_team_url = request_url + 'queryTeamByCaptainId?captainId=' + user.isPlayer;
+	mui.plusReady(function() {
+		mui.ajax({
+			type: 'GET',
+			url: get_team_url,
+			timeout: 10000,
+			dataType: "json",
+			success: function(data) {
+				if (data.data != null) {
+					// var team_s = JSON.stringify(data.data);
+					// team_s = team_s.substring(1, team_s.length - 1);
+					// var team = JSON.parse(team_s);
+					var team = new Array();
+					team = data.data;
+				}
+				 var s ="";
+	
+				 // for (var p in team[0]) {
+				 // 	s= s+"n "+p+": "+team[0][p];
+				 // }
+				 // alert(s);
+	
+				if (data.code == 0) {
+					mui.toast(data.message);
+					mui.openWindow({
+						url:'arrange.html',
+						// url: 'lineVis.html',
+						extras: {
+							user: user,
+							team: team,
+						},
+						
+					});
+				} else {
+					mui.toast(data.message);
+				}
+			},
+			error: function(xhr, type, errorThrown) {
+				mui.toast("服务器内部出错！");
+			}
+		});
 	});
 }
 
@@ -95,23 +131,60 @@ function to_search(user) {
 	});
 }
 
-function to_buymore(user) {
+function to_buymore(user,team) {
 	mui.init();
 	mui.openWindow({
 		url: 'buymore.html',
 		extras: {
 			user: user,
+			team: team,
 		}
 	});
 }
 
 function to_checkEquipment(user) {
 	mui.init();
-	mui.openWindow({
-		url: 'checkequipment.html',
-		extras: {
-			user: user,
-		}
+	var get_team_url = request_url + 'queryTeamByCaptainId?captainId=' + user.isPlayer;
+	mui.plusReady(function() {
+		mui.ajax({
+			type: 'GET',
+			url: get_team_url,
+			timeout: 10000,
+			dataType: "json",
+			success: function(data) {
+				if (data.data != null) {
+					// var team_s = JSON.stringify(data.data);
+					// team_s = team_s.substring(1, team_s.length - 1);
+					// var team = JSON.parse(team_s);
+					var team = new Array();
+					team = data.data;
+				}
+				 var s ="";
+	
+				 // for (var p in team[0]) {
+				 // 	s= s+"n "+p+": "+team[0][p];
+				 // }
+				 // alert(s);
+	
+				if (data.code == 0) {
+					mui.toast(data.message);
+					mui.openWindow({
+						url:'checkequipment.html',
+						// url: 'lineVis.html',
+						extras: {
+							user: user,
+							team: team,
+						},
+						
+					});
+				} else {
+					mui.toast(data.message);
+				}
+			},
+			error: function(xhr, type, errorThrown) {
+				mui.toast("服务器内部出错！");
+			}
+		});
 	});
 }
 

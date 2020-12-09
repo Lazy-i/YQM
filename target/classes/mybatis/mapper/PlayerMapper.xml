@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lazyi.mapper.PlayerMapper">
+
+    <select id="getPrimayKey" resultType="int">
+        select userId from user where userAccount=#{userAccount}
+    </select>
+
+    <select id="queryPlayerById" resultType="Player">
+        select * from player where playerId = #{playerId}
+    </select>
+
+    <select id="queryPlayerByUserAccount" resultType="Player">
+        select * from player where playerId in (select isPlayer from user where userAccount = #{userAccount})
+    </select>
+
+    <insert id="addPlayer" parameterType="Player">
+        insert into player (playerId, name, telephoneNumber, emergencyContactNumber,isCaptain)
+        value (#{playerId},#{name},#{telephoneNumber},#{emergencyContactNumber},'-1')
+    </insert>
+
+    <update id="updatePlayer">
+        update player set name=#{name},telephoneNumber=#{telephoneNumber},emergencyContactNumber=#{emergencyContactNumber},isCaptain=#{isCaptain}
+        where playerId in (select isPlayer from user where userAccount=#{userAccount} and userPassword=#{userPassword})
+    </update>
+
+    <update id="deletePlayer">
+        update user set isPlayer=-1 where userAccount=#{userAccount} and userPassword=#{userPassword}
+    </update>
+
+    <update id="updatePlayerIsC">
+        update player set isCaptain=#{isCaptain} where playerId=#{playerId}
+    </update>
+
+</mapper>

@@ -24,6 +24,12 @@ public interface EnrolMapper {
 
     void updateEnrol(Integer enId, Integer teamNum, String fieldName, Integer isNeedReferee, String time, Integer goPlayerNum, Integer isShowing);
 
+    void attendEnrol(Integer enId);
+
+    List<Enrol> queryEnrolAllShow();
+
+    void showEnrol(Integer enId,Integer isShowing);
+
     void deleteEnrol(Integer enId);
 
 }

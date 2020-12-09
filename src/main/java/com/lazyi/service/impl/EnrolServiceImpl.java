@@ -1,5 +1,6 @@
 package com.lazyi.service.impl;
 
+import com.lazyi.mapper.EnPlayerMapper;
 import com.lazyi.mapper.EnrolMapper;
 import com.lazyi.pojo.Enrol;
 import com.lazyi.service.EnrolService;
@@ -15,6 +16,9 @@ public class EnrolServiceImpl implements EnrolService {
 
     @Autowired
     private EnrolMapper enrolMapper;
+
+    @Autowired
+    private EnPlayerMapper enPlayerMapper;
 
     @Override
     public List<Enrol> queryEnrolList() throws Exception {
@@ -48,6 +52,26 @@ public class EnrolServiceImpl implements EnrolService {
     public List<Enrol> updateEnrol(Integer enId, Integer teamNum, String fieldName, Integer isNeedReferee, String time, Integer goPlayerNum, Integer isShowing) throws Exception {
         enrolMapper.updateEnrol(enId,  teamNum, fieldName, isNeedReferee, time, goPlayerNum, isShowing);
         return enrolMapper.queryEnrolByEnId(enId);
+    }
+
+    @Override
+    public List<Enrol> attendEnrol(Integer enId, Integer playerId) throws Exception {
+        enPlayerMapper.addEnPlayer(enId, playerId);
+        enrolMapper.attendEnrol(enId);
+        return queryEnrolByEnId(enId);
+    }
+
+    @Override
+    public List<Enrol> queryEnrolAllShow() throws Exception {
+        List<Enrol> enrols = enrolMapper.queryEnrolAllShow();
+        if(enrols.size() == 0) throw new Exception(" No Enrol In DB");
+        return enrols;
+    }
+
+    @Override
+    public List<Enrol> showEnrol(Integer enId, Integer isShowing) throws Exception {
+        enrolMapper.showEnrol(enId, isShowing);
+        return queryEnrolByEnId(enId);
     }
 
     @Override

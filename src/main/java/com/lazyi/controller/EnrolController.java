@@ -51,8 +51,25 @@ public class EnrolController {
         return ExceptionCatch.exceptionCatch(enrolService,enId.toString(),enId,teamNum,fieldName,isNeedReferee,time,goPlayerNum,isShowing);
     }
 
+    @RequestMapping(value = "/api/attendEnrol", method = RequestMethod.GET)
+    public ResultBean attendEnrol(@RequestParam(value = "enId") Integer enId,
+                                            @RequestParam(value = "playerId") Integer playerId){
+        return ExceptionCatch.exceptionCatch(enrolService,enId.toString(), enId,playerId);
+    }
+
     @RequestMapping(value = "/api/deleteEnrol", method = RequestMethod.GET)
     public ResultBean deleteEnrol(@RequestParam(value = "enId") Integer enId){
         return ExceptionCatch.exceptionCatch(enrolService,enId.toString(),enId);
+    }
+
+    @RequestMapping(value = "/api/showEnrol", method = RequestMethod.GET)
+    public ResultBean showEnrol(@RequestParam(value = "enId") Integer enId,
+                                @RequestParam(value = "isShowing") Integer isShowing){
+        return ExceptionCatch.exceptionCatch(enrolService,enId.toString(),enId,isShowing);
+    }
+
+    @RequestMapping(value ="/api/queryEnrolAllShow", method = RequestMethod.GET)
+    public ResultBean queryEnrolAllShow(){
+        return ExceptionCatch.exceptionCatch(enrolService,"query");
     }
 }

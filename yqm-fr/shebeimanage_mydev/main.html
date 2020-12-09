@@ -113,7 +113,7 @@
 				<span class="mui-icon mui-icon-home"></span>
 				<span class="mui-tab-label">主页</span>
 			</a>
-			<a class="mui-tab-item" href="#tabbar-with-search" style="touch-action: none;" onclick="to_arrange(user)">
+			<a class="mui-tab-item" href="#tabbar-with-search" style="touch-action: none;" onclick="to_arrange(user,request_url)">
 				<span class="mui-icon mui-icon-list"></span>
 				<span class="mui-tab-label">约球</span>
 			</a>
@@ -122,5 +122,9 @@
 				<span class="mui-tab-label">我的</span>
 			</a>
 		</nav>
+		<script type="text/javascript">
+			mui.init()
+			var request_url = localStorage.getItem('request_url');
+		</script>
 	</body>
 </html>
