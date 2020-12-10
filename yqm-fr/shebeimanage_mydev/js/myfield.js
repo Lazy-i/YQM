@@ -108,28 +108,7 @@ function more(fieldid, request_url) {
 					var s ="";
 					//alert(dev_data);
 					for (var p in field_info_data) {
-						// if (p == "fieldId") {
-
-						// 	if (p == "devWorkStatus") {
-						// 		if (dev_data[p] == 1) {
-						// 			s = s + "\n" + "设备状态" + ": " + "正常";
-						// 		} else if (dev_data[p] == 2) {
-						// 			s = s + "\n" + "设备状态" + ": " + "报废";
-						// 		} else if (dev_data[p] == 3) {
-						// 			s = s + "\n" + "设备状态" + ": " + "故障";
-						// 		} else if (dev_data[p] == 4) {
-						// 			s = s + "\n" + "设备状态" + ": " + "维修";
-						// 		} else if (dev_data[p] == 5) {
-						// 			s = s + "\n" + "设备状态" + ": " + "待报废";
-						// 		}
-						// 	} else if (p == "devStatus") {
-						// 		if (dev_data[p] == 1) {
-						// 			s = s + "\n" + "设备出借状态" + ": " + "空闲";
-						// 		} else if (dev_data[p] == 2) {
-						// 			s = s + "\n" + "设备出借状态" + ": " + "出借";
-						// 		}
-						// 	}
-						// } 
+						
 						if(p=="fieldId"){
 							s= s+"\n"+"场地识别码"+": "+field_info_data[p];
 						}
@@ -218,4 +197,103 @@ function more(fieldid, request_url) {
 			});
 		});
 	}
+	function add_record(request_url, fieldName, fieldSpace,openTime,fieldState,fieldManagerId,fieldId,num) {
+		var record_se = document.getElementById("record-" + num);
+		var record_type = record_se.options[record_se.selectedIndex].value;
+		if (record_type == "item-2") {
+			add_kong(request_url, fieldName, fieldSpace,openTime,0,fieldManagerId,fieldId);
+		} else if (record_type == "item-3") {
+			add_zu(request_url, fieldName, fieldSpace,openTime,1,fieldManagerId,fieldId);
+		} else if (record_type == "item-4") {
+			add_wei(request_url, fieldName, fieldSpace,openTime,2,fieldManagerId,fieldId);
+		} else if (record_type == "item-1") {
+			alert("请选择您要添加的记录类型！")
+		}
+	 }
+	 function add_kong(request_url, fieldName, fieldSpace,openTime,fieldState,fieldManagerId,fieldId) {
+	 	mui.init();
+	 	mui.plusReady(function() {
+	 		var self = plus.webview.currentWebview();
+	 		var user = self.user;
+	 
+	 		// var s ="";
+	 
+	 		// for (var p in user) {
+	 		// 	s= s+"n "+p+": "+user[p];
+	 		// }
+	 		// alert(s);
+	 		var add_kong_url = request_url + 'updateField?fieldName=' + fieldName + '&fieldSpace=' + fieldSpace + '&openTime=' + openTime + '&fieldState=' + fieldState + '&fieldManagerId=' + fieldManagerId+ '&fieldId=' + fieldId;
+	 		mui.ajax({
+	 			type: 'GET',
+	 			url: add_kong_url,
+	 			timeout: 10000,
+	 			dataType: "json",
+	 			success: function(data) {
+	 				mui.toast(data.message);
+	 				myfield(request_url);
+	 			},
+	 			error: function(xhr, type, errorThrown) {
+	 				mui.toast("服务器内部出错！");
+	 			}
+	 		});
+	 	});
+	 }
+	 
+	 function add_zu(request_url, fieldName, fieldSpace,openTime,fieldState,fieldManagerId,fieldId) {
+	 	mui.init();
+	 	mui.plusReady(function() {
+	 		var self = plus.webview.currentWebview();
+	 		var user = self.user;
+	 
+	 		// var s ="";
+	 
+	 		// for (var p in user) {
+	 		// 	s= s+"n "+p+": "+user[p];
+	 		// }
+	 		// alert(s);
+	 		var add_zu_url = request_url + 'updateField?fieldName=' + fieldName + '&fieldSpace=' + fieldSpace + '&openTime=' + openTime + '&fieldState=' + fieldState + '&fieldManagerId=' + fieldManagerId+ '&fieldId=' + fieldId;
+	 		mui.ajax({
+	 			type: 'GET',
+	 			url: add_zu_url,
+	 			timeout: 10000,
+	 			dataType: "json",
+	 			success: function(data) {
+	 				mui.toast(data.message);
+	 				myfield(request_url);
+	 			},
+	 			error: function(xhr, type, errorThrown) {
+	 				mui.toast("服务器内部出错！");
+	 			}
+	 		});
+	 	});
+	 }
+	 
+	 function add_wei(request_url, fieldName, fieldSpace,openTime,fieldState,fieldManagerId,fieldId) {
+	 	mui.init();
+	 	mui.plusReady(function() {
+	 		var self = plus.webview.currentWebview();
+	 		var user = self.user;
+	 
+	 		// var s ="";
+	 
+	 		// for (var p in user) {
+	 		// 	s= s+"n "+p+": "+user[p];
+	 		// }
+	 		// alert(s);
+	 		var add_wei_url = request_url + 'updateField?fieldName=' + fieldName + '&fieldSpace=' + fieldSpace + '&openTime=' + openTime + '&fieldState=' + fieldState + '&fieldManagerId=' + fieldManagerId+ '&fieldId=' + fieldId;
+	 		mui.ajax({
+	 			type: 'GET',
+	 			url: add_wei_url,
+	 			timeout: 10000,
+	 			dataType: "json",
+	 			success: function(data) {
+	 				mui.toast(data.message);
+	 				myfield(request_url);
+	 			},
+	 			error: function(xhr, type, errorThrown) {
+	 				mui.toast("服务器内部出错！");
+	 			}
+	 		});
+	 	});
+	 }
 	

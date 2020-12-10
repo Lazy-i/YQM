@@ -52,9 +52,9 @@ function finish(resquest_url) {
 		 for (var p in team[0]) {
 			 s= s+"/n "+p+": "+team[0][p];
 		 }
-		 alert(s);
+		 // alert(s);
 		var add_buy_url = request_url + 'addEnrol?teamId=' + team[0].teamId + '&teamName=' + team[0].teamName + '&fieldName=' + dev_fieldName +
-			'&teamNum=' + dev_playerNum + '&isNeedRfereee=' + dev_isNeedReferee + '&time=' + dev_time;
+			'&teamNum=' + dev_playerNum + '&isNeedReferee=' + dev_isNeedReferee + '&time=' + dev_time;
 			alert(add_buy_url);
 		mui.ajax({
 			type: 'GET',
@@ -72,7 +72,7 @@ function finish(resquest_url) {
 
 			},
 			error: function(xhr, type, errorThrown) {
-				mui.toast("服务器内部出错！");
+				mui.toast("服务器内部出错！777");
 			}
 		});
 	});

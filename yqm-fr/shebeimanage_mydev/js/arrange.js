@@ -96,12 +96,12 @@ function yes_arrange(enId, request_url) { ///////////type=0 报废 type==1 报�
 		// }
 		// alert(s);
 		var arrange_yes_url;
-		var arrange_yes_url_0 = request_url + 'attendEnrol?enId=' + enId + '&playerId=' user.isPlayer;
+		var arrange_yes_url_0 = request_url + 'attendEnrol?enId=' + enId + '&playerId=' +user.isPlayer;
 		
 		// alert(search_url);
 		mui.ajax({
 			type: 'GET',
-			url: arrange_yes_url,
+			url: arrange_yes_url_0,
 			timeout: 10000,
 			dataType: "json",
 			success: function(data) {
@@ -171,7 +171,7 @@ function no_arrange(logid, request_url, type) {
 	});
 }
 
-function more_arr(enId, request_url) { //type=0 报废申请的更多  type=1 购置申请的更多   type =2 报修申请的更多
+function more_arrange(enId, request_url) { //type=0 报废申请的更多  type=1 购置申请的更多   type =2 报修申请的更多
 	mui.init();
 	mui.plusReady(function() {
 		var self = plus.webview.currentWebview();
@@ -198,24 +198,24 @@ function more_arr(enId, request_url) { //type=0 报废申请的更多  type=1 �
 					//alert(dev_data);
 					for (var p in dev_data) {
 						if (p == "enId") {
-							s = s + "\n" + "约球ID: " + p;
+							s = s + "\n" + "约球ID: " + dev_data.enId;
 						}else if(p == "teamId"){
-							s = s + "\n" + "球队Id: " + p;
+							s = s + "\n" + "球队Id: " + dev_data.teamId;
 						}else if(p == "teamName"){
-							s = s + "\n" + "球队名称: " + p;
+							s = s + "\n" + "球队名称: " + dev_data.teamName;
 						}else if(p == "playerNum"){
-							s = s + "\n" + "预计参加人数: " + p;
+							s = s + "\n" + "预计参加人数: " + dev_data.playerNum;
 						}else if(p == "fieldName"){
-							s = s + "\n" + "暂定地点: " + p;
+							s = s + "\n" + "暂定地点: " + dev_data.fieldName;
 						}else if(p == "time"){
-							s = s + "\n" + "预定时间:" + p;
+							s = s + "\n" + "预定时间:" + dev_data.time;
 						}else if(p == "goPlayerNum"){
-							s = s + "\n" + "已报名人数: " + p;
+							s = s + "\n" + "已报名人数: " + dev_data.goPlayerNum;
 						}else if(p == "isNeedReferee"){
 							if(p == 0){
-								s = s + "\n" + "不需要裁判"；
+								s = s + "\n" + "不需要裁判";
 							}else{
-								s = s + "\n" + "需要裁判"；
+								s = s + "\n" + "需要裁判";
 							}
 						}
 						
