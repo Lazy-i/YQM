@@ -197,20 +197,20 @@ function more(fieldid, request_url) {
 			});
 		});
 	}
-	function add_record(request_url, fieldName, fieldSpace,openTime,fieldState,fieldManagerId,fieldId,num) {
+	function add_record(request_url,field,num) {
 		var record_se = document.getElementById("record-" + num);
 		var record_type = record_se.options[record_se.selectedIndex].value;
 		if (record_type == "item-2") {
-			add_kong(request_url, fieldName, fieldSpace,openTime,0,fieldManagerId,fieldId);
+			add_kong(request_url,0,field);
 		} else if (record_type == "item-3") {
-			add_zu(request_url, fieldName, fieldSpace,openTime,1,fieldManagerId,fieldId);
+			add_zu(request_url,1,field);
 		} else if (record_type == "item-4") {
-			add_wei(request_url, fieldName, fieldSpace,openTime,2,fieldManagerId,fieldId);
+			add_wei(request_url,2,field);
 		} else if (record_type == "item-1") {
 			alert("请选择您要添加的记录类型！")
 		}
 	 }
-	 function add_kong(request_url, fieldName, fieldSpace,openTime,fieldState,fieldManagerId,fieldId) {
+	 function add_kong(request_url,fieldState,fieldId) {
 	 	mui.init();
 	 	mui.plusReady(function() {
 	 		var self = plus.webview.currentWebview();
@@ -222,7 +222,8 @@ function more(fieldid, request_url) {
 	 		// 	s= s+"n "+p+": "+user[p];
 	 		// }
 	 		// alert(s);
-	 		var add_kong_url = request_url + 'updateField?fieldName=' + fieldName + '&fieldSpace=' + fieldSpace + '&openTime=' + openTime + '&fieldState=' + fieldState + '&fieldManagerId=' + fieldManagerId+ '&fieldId=' + fieldId;
+	 		var add_kong_url = request_url + 'updateFieldState?fieldId=' + fieldId  + '&fieldState=' + fieldState;
+			alert(add_kong_url)
 	 		mui.ajax({
 	 			type: 'GET',
 	 			url: add_kong_url,
@@ -239,7 +240,7 @@ function more(fieldid, request_url) {
 	 	});
 	 }
 	 
-	 function add_zu(request_url, fieldName, fieldSpace,openTime,fieldState,fieldManagerId,fieldId) {
+	 function add_zu(request_url,fieldState,fieldId) {
 	 	mui.init();
 	 	mui.plusReady(function() {
 	 		var self = plus.webview.currentWebview();
@@ -251,7 +252,7 @@ function more(fieldid, request_url) {
 	 		// 	s= s+"n "+p+": "+user[p];
 	 		// }
 	 		// alert(s);
-	 		var add_zu_url = request_url + 'updateField?fieldName=' + fieldName + '&fieldSpace=' + fieldSpace + '&openTime=' + openTime + '&fieldState=' + fieldState + '&fieldManagerId=' + fieldManagerId+ '&fieldId=' + fieldId;
+	 		var add_zu_url = request_url + 'updateFieldState?fieldId=' + fieldId  + '&fieldState=' + fieldState;
 	 		mui.ajax({
 	 			type: 'GET',
 	 			url: add_zu_url,
@@ -268,7 +269,7 @@ function more(fieldid, request_url) {
 	 	});
 	 }
 	 
-	 function add_wei(request_url, fieldName, fieldSpace,openTime,fieldState,fieldManagerId,fieldId) {
+	 function add_wei(request_url,fieldState,fieldId) {
 	 	mui.init();
 	 	mui.plusReady(function() {
 	 		var self = plus.webview.currentWebview();
@@ -280,7 +281,7 @@ function more(fieldid, request_url) {
 	 		// 	s= s+"n "+p+": "+user[p];
 	 		// }
 	 		// alert(s);
-	 		var add_wei_url = request_url + 'updateField?fieldName=' + fieldName + '&fieldSpace=' + fieldSpace + '&openTime=' + openTime + '&fieldState=' + fieldState + '&fieldManagerId=' + fieldManagerId+ '&fieldId=' + fieldId;
+	 		var add_wei_url = request_url + 'updateFieldState?fieldId=' + fieldId  + '&fieldState=' + fieldState;
 	 		mui.ajax({
 	 			type: 'GET',
 	 			url: add_wei_url,

@@ -34,7 +34,7 @@
 							<% } %>
 							
 							<button style="position: absolute;top:6px;right:28%;height:28px;line-height: 15px;" onclick="more(<%= list[i].fieldId%>,request_url)">更多</button>
-							<select id="record-<%=i%>" class="mui-btn" style="position: absolute;top:1px;right: 3%;height:33px;line-height: 15px;width: 80px;" onchange="add_record(request_url,<%= list[i].devId%>,<%=i%>)">
+							<select id="record-<%=i%>" class="mui-btn" style="position: absolute;top:1px;right: 3%;height:33px;line-height: 15px;width: 80px;" onchange="add_record(request_url,<%=list[i].fieldId%>,<%=i%>)">
 								<option value="item-1">状态更新</option>
 								<option value="item-2">添加空闲</option>
 								<option value="item-3">添加租用</option>
