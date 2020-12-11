@@ -42,4 +42,10 @@ public class FieldController {
                                   @RequestParam(value = "fieldId") Integer fieldId){
         return ExceptionCatch.exceptionCatch(fieldService, fieldId.toString(), fieldName,fieldSpace,openTime,fieldState,fieldManagerId,fieldId);
     }
+
+    @RequestMapping(value = "/api/updateFieldState", method = RequestMethod.GET)
+    public ResultBean updateFieldState(@RequestParam(value = "fieldId") Integer fieldId,
+                                       @RequestParam(value = "fieldState") Integer fieldState){
+        return ExceptionCatch.exceptionCatch(fieldService, fieldId.toString(),fieldId, fieldState);
+    }
 }

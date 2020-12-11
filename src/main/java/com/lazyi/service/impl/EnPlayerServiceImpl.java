@@ -25,14 +25,23 @@ public class EnPlayerServiceImpl implements EnPlayerService {
 
     @Override
     public List<EnPlayer> queryEnPlayerByEnId(Integer enId) throws Exception{
-        List<EnPlayer> enPlayers = enPlayerMapper.queryEnPlayerList();
+        List<EnPlayer> enPlayers = enPlayerMapper.queryEnPlayerByEnId(enId);
         if(enPlayers.size() == 0) throw new Exception("No ENPlayer in DB");
         return enPlayers;
     }
 
     @Override
     public List<EnPlayer> addEnPlayer(Integer enId, Integer playerId) throws Exception{
-        enPlayerMapper.addEnPlayer(enId, playerId);
+        List<EnPlayer> enPlayers = enPlayerMapper.queryEnPlayerByEnId(enId);
+        int i = 0;
+        for(EnPlayer enPlayer : enPlayers){
+            if(playerId == enPlayer.getPlayerId()){
+                i = 1;
+                throw new Exception("YOU HAVE ALREADY ENROL !");
+            }
+        }
+        if(i == 0){
+        enPlayerMapper.addEnPlayer(enId, playerId);}
         return enPlayerMapper.queryEnPlayerList();
     }
 

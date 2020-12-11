@@ -98,7 +98,7 @@ function yes_arrange(enId, request_url) { ///////////type=0 报废 type==1 报�
 		var arrange_yes_url;
 		var arrange_yes_url_0 = request_url + 'attendEnrol?enId=' + enId + '&playerId=' +user.isPlayer;
 		
-		// alert(search_url);
+		 alert(arrange_yes_url_0);
 		mui.ajax({
 			type: 'GET',
 			url: arrange_yes_url_0,

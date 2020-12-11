@@ -15,4 +15,6 @@ public interface FieldService extends Service{
     List<Field> updateField(String fieldName, String fieldSpace, String openTime, Integer fieldState, Integer fieldManagerId, Integer fieldId) throws Exception;
 
     List<Field> deleteField(String userAccount, String userPassword, String fieldId) throws Exception;
+
+    List<Field> updateFieldState(Integer fieldId, Integer fieldState) throws Exception;
 }

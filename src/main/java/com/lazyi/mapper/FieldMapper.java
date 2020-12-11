@@ -37,4 +37,5 @@ public interface FieldMapper {
     void updateFieldState(@Param("fieldId") Integer fieldId,
                           @Param("fieldState") Integer fieldState);
 
+
 }

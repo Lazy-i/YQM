@@ -48,4 +48,10 @@ public class FieldServiceImpl implements FieldService {
     public List<Field> deleteField(String userAccount, String userPassword, String fieldId) throws Exception {
         return null;
     }
+
+    @Override
+    public List<Field> updateFieldState(Integer fieldId, Integer fieldState) throws Exception {
+        fieldMapper.updateFieldState(fieldId, fieldState);
+        return fieldMapper.queryFieldById(fieldId);
+    }
 }

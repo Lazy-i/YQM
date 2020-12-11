@@ -26,7 +26,7 @@
     </update>
 
     <update id="updateFieldState" parameterType="Field">
-        update field ste fieldState=#{fieldState} where fieldId=#{fieldId}
+        update field set fieldState=#{fieldState} where fieldId=#{fieldId}
     </update>
 
 </mapper>
