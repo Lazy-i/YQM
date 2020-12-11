@@ -12,6 +12,8 @@ public interface EnrolService extends Service {
 
     List<Enrol> queryEnrolByTeamId(Integer teamId) throws Exception;
 
+    List<Enrol> queryEnrolByPlayerId(Integer playerId) throws Exception;
+
     List<Enrol> queryEnrolByEnId(Integer enId) throws Exception;
 
     List<Enrol> addEnrol(Integer teamId, String teamName, Integer teamNum, String fieldName, Integer isNeedReferee, String time) throws Exception;

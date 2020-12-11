@@ -42,7 +42,7 @@ function load_dai(request_url) {
 		// var arrange_buyload_url = request_url + 'logFindBuyTempRecord?userAccount=' + user.userAccount;
 		// var arrange_manager_url = request_url + 'userAuth?userAuth=2';
 		// var arrange_xiuload_url = request_url + 'logFindRepairLog?userAccount=' + user.userAccount;
-		var get_Enrol_url = request_url + 'queryEnrolByTeamId?teamId=' +team[0].teamId;
+		var get_Enrol_url = request_url + 'queryEnrolByPlayerId?playerId=' +user.isPlayer;
 		// var w_bao_data= new Array();
 		// var w_buy_data= new Array();
 		// var w_man_data= new Array();
@@ -98,7 +98,7 @@ function yes_arrange(enId, request_url) { ///////////type=0 报废 type==1 报�
 		var arrange_yes_url;
 		var arrange_yes_url_0 = request_url + 'attendEnrol?enId=' + enId + '&playerId=' +user.isPlayer;
 		
-		 alert(arrange_yes_url_0);
+		 //alert(arrange_yes_url_0);
 		mui.ajax({
 			type: 'GET',
 			url: arrange_yes_url_0,
@@ -109,6 +109,8 @@ function yes_arrange(enId, request_url) { ///////////type=0 报废 type==1 报�
 				if ((data.code == 0)) {
 					mui.toast("报名成功！")
 					load_dai(request_url);
+				}else if(data.message == "YOU HAVE ALREADY ENROL !"){
+					mui.toast("您已报名，请勿重复报名");
 				}
 				// 	var s ="";
 

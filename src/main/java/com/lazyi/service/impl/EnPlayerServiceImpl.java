@@ -34,11 +34,14 @@ public class EnPlayerServiceImpl implements EnPlayerService {
     public List<EnPlayer> addEnPlayer(Integer enId, Integer playerId) throws Exception{
         List<EnPlayer> enPlayers = enPlayerMapper.queryEnPlayerByEnId(enId);
         int i = 0;
+        try{
         for(EnPlayer enPlayer : enPlayers){
             if(playerId == enPlayer.getPlayerId()){
-                i = 1;
                 throw new Exception("YOU HAVE ALREADY ENROL !");
             }
+        }
+        }catch (Exception e){
+            i = 1;
         }
         if(i == 0){
         enPlayerMapper.addEnPlayer(enId, playerId);}

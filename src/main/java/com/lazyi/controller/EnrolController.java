@@ -25,6 +25,11 @@ public class EnrolController {
         return ExceptionCatch.exceptionCatch(enrolService,teamId.toString(),teamId);
     }
 
+    @RequestMapping(value = "/api/queryEnrolByPlayerId", method = RequestMethod.GET)
+    public ResultBean queryEnrolByPlayerId(@RequestParam(value = "playerId") Integer playerId){
+        return ExceptionCatch.exceptionCatch(enrolService,playerId.toString(),playerId);
+    }
+
     @RequestMapping(value = "/api/queryEnrolByEnId", method = RequestMethod.GET)
     public ResultBean queryEnrolByEnId(@RequestParam(value = "enId") Integer enId){
         return ExceptionCatch.exceptionCatch(enrolService,enId.toString(),enId);

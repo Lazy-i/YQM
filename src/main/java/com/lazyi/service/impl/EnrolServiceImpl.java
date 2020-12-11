@@ -1,17 +1,13 @@
 package com.lazyi.service.impl;
 
-import com.lazyi.mapper.EnPlayerMapper;
-import com.lazyi.mapper.EnrolMapper;
-import com.lazyi.mapper.PlayerMapper;
-import com.lazyi.mapper.TeamMapper;
-import com.lazyi.pojo.Enrol;
-import com.lazyi.pojo.Player;
-import com.lazyi.pojo.Team;
+import com.lazyi.mapper.*;
+import com.lazyi.pojo.*;
 import com.lazyi.service.EnrolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -30,6 +26,9 @@ public class EnrolServiceImpl implements EnrolService {
     @Autowired
     private PlayerMapper playerMapper;
 
+    @Autowired
+    private TeamPlayerMapper teamPlayerMapper;
+
     @Override
     public List<Enrol> queryEnrolList() throws Exception {
         List<Enrol> enrols = enrolMapper.queryEnrolList();
@@ -40,6 +39,17 @@ public class EnrolServiceImpl implements EnrolService {
     @Override
     public List<Enrol> queryEnrolByTeamId(Integer teamId) throws Exception {
         List<Enrol> enrols = enrolMapper.queryEnrolByTeamId(teamId);
+        if(enrols.size() == 0) throw new Exception(" No Enrol In DB");
+        return enrols;
+    }
+
+    @Override
+    public List<Enrol> queryEnrolByPlayerId(Integer playerId) throws Exception {
+        List<TeamPlayer> teamPlayers = teamPlayerMapper.queryPlayerAllTeamById(playerId);
+        List<Enrol> enrols = new ArrayList<>();
+        for(TeamPlayer teamPlayer : teamPlayers) {
+            enrols.addAll(enrolMapper.queryEnrolByTeamId(teamPlayer.getTeamId()));
+        }
         if(enrols.size() == 0) throw new Exception(" No Enrol In DB");
         return enrols;
     }
@@ -66,8 +76,17 @@ public class EnrolServiceImpl implements EnrolService {
 
     @Override
     public List<Enrol> attendEnrol(Integer enId, Integer playerId) throws Exception {
-        enPlayerMapper.addEnPlayer(enId, playerId);
-        enrolMapper.attendEnrol(enId);
+        List<EnPlayer> enPlayers = enPlayerMapper.queryEnPlayerByEnId(enId);
+        int i = 0;
+        try{ enPlayerMapper.addEnPlayer(enId, playerId);
+
+        }catch (Exception e){
+            for(EnPlayer enPlayer : enPlayers){
+                if(playerId == enPlayer.getPlayerId()){
+                    throw new Exception("YOU HAVE ALREADY ENROL !");
+                }
+            }
+        }
         return queryEnrolByEnId(enId);
     }
 
