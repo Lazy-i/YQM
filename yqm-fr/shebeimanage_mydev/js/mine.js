@@ -82,12 +82,17 @@ function quit_login() {
 
 	function register_to_player(request_url,user) {
 		mui.init();
-		mui.openWindow({
-			url: 'RegisterPlayer.html',
-			extras: {
-				user: user,
-			}
-		});
+		if (user.isPlayer != -1) {
+			mui.toast("您已经是球员!");
+		}
+		else {
+			mui.openWindow({
+				url: 'RegisterPlayer.html',
+				extras: {
+					user: user,
+				}
+			});
+		}
 		// mui.plusReady(function() {
 		// 	var self = plus.webview.currentWebview();
 		// 	var user = self.user;
@@ -128,12 +133,17 @@ function quit_login() {
 
 	function register_to_judge(request_url,user) {
 		mui.init();
-		mui.openWindow({
-			url: 'RegisterJudge.html',
-			extras: {
-				user: user,
-			}
-		});
+		if (user.isReferee != -1) {
+			mui.toast("您已经是裁判员!");
+		}
+		else {
+			mui.openWindow({
+				url: 'RegisterJudge.html',
+				extras: {
+					user: user,
+				}
+			});
+		}
 		// mui.plusReady(function() {
 		// 	var self = plus.webview.currentWebview();
 		// 	var user = self.user;
@@ -174,12 +184,17 @@ function quit_login() {
 
 	function register_to_manager(request_url,user) {
 		mui.init();
-		mui.openWindow({
-			url: 'RegisterManager.html',
-			extras: {
-				user: user,
-			}
-		});
+		if (user.isFieldManager != -1) {
+			mui.toast("您已经是场地管理员!");
+		}
+		else {
+			mui.openWindow({
+				url: 'RegisterManager.html',
+				extras: {
+					user: user,
+				}
+			});
+		}
 		// mui.plusReady(function() {
 		// 	var self = plus.webview.currentWebview();
 		// 	var user = self.user;
