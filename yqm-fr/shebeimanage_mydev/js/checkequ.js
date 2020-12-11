@@ -109,6 +109,90 @@ function more_arrange(enId, request_url) { //type=0 报废申请的更多  type=
 	});
 }
 
+function yes_arrange(enId, request_url) { ///////////type=0 报废 type==1 报修
+	mui.init();
+	mui.plusReady(function() {
+		var self = plus.webview.currentWebview();
+		var user = self.user;
+		var team = self.team;
+
+		// var s ="";
+
+		// for (var p in user) {
+		// 	s= s+"n "+p+": "+user[p];
+		// }
+		// alert(s);
+		var arrange_yes_url;
+		var arrange_yes_url_0 = request_url + 'showEnrol?enId=' + enId + '&isShowing=' + 1;
+		
+		// alert(search_url);
+		mui.ajax({
+			type: 'GET',
+			url: arrange_yes_url_0,
+			timeout: 10000,
+			dataType: "json",
+			success: function(data) {
+
+				if ((data.code == 0)) {
+					mui.toast("发布成功！")
+					check_equ(request_url);
+				}
+				// 	var s ="";
+
+				// 	for (var p in dev_chadata) {
+				// 		s= s+"\n"+p+": "+dev_chadata[p];
+				// 	}
+				// 	alert(s);
+			},
+			error: function(xhr, type, errorThrown) {
+				mui.toast("服务器内部出错！");
+			}
+		});
+	});
+}
+
+function no_arrange(enId, request_url) { ///////////type=0 报废 type==1 报修
+	mui.init();
+	mui.plusReady(function() {
+		var self = plus.webview.currentWebview();
+		var user = self.user;
+		var team = self.team;
+
+		// var s ="";
+
+		// for (var p in user) {
+		// 	s= s+"n "+p+": "+user[p];
+		// }
+		// alert(s);
+		var arrange_no_url;
+		var arrange_no_url_0 = request_url + 'showEnrol?enId=' + enId + '&isShowing=' + 0;
+		
+		// alert(search_url);
+		mui.ajax({
+			type: 'GET',
+			url: arrange_no_url_0,
+			timeout: 10000,
+			dataType: "json",
+			success: function(data) {
+
+				if ((data.code == 0)) {
+					mui.toast("取消成功！")
+					check_equ(request_url);
+				}
+				// 	var s ="";
+
+				// 	for (var p in dev_chadata) {
+				// 		s= s+"\n"+p+": "+dev_chadata[p];
+				// 	}
+				// 	alert(s);
+			},
+			error: function(xhr, type, errorThrown) {
+				mui.toast("服务器内部出错！");
+			}
+		});
+	});
+}
+
 function more(dev_data_num,request_url){
 	mui.init();
 	mui.plusReady(function(){
