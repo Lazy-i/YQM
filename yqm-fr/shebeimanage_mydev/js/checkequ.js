@@ -4,54 +4,36 @@ function check_equ(request_url){
 	mui.plusReady(function(){
 	            var self = plus.webview.currentWebview();
 				 var user = self.user;
+				 var team = self.team;
 				 
-				 // var s ="";
+				  // var s ="";
 				 	
-				 // for (var p in user) {
-				 // 	s= s+"n "+p+": "+user[p];
-				 // }
-				 // alert(s);
-				 var search_check_url = request_url+'devUserAccount?userAccount='+user.userAccount;
+				  // for (var p in team[0]) {
+				  // 	s= s+"n "+p+": "+team[0][p];
+				  // }
+				  // alert(s);
+				 var get_Enrol_url = request_url + 'queryEnrolByTeamId?teamId=' + team[0].teamId;
 				 // alert(search_check_url);
 				 mui.ajax({
 					 type:'GET',
-					 url:search_check_url,
+					 url:get_Enrol_url,
 					 timeout:10000,	
 					 dataType:"json",
 					 success:function(data){
 							
 						if((data.data!=null)){
 							var dev_data = new Array();
-							var dev_data_f = new Array();
-							dev_data_f=data.data;
+							dev_data=data.data;
 								
-							for(i = 0, j = 0; i < dev_data_f.length; i++){
-								if((dev_data_f[i].managerAccount==user.userAccount)||(dev_data_f[i].userAccount==user.userAccount)){
-									dev_data[j]=dev_data_f[i];
-									j++;
-								}
-							}
-							for(i=0;i<dev_data.length;i++){
-										if (dev_data[i].devWorkStatus == 1) {
-											dev_data[i].devWorkStatus= "正常";
-										} else if (dev_data[i].devWorkStatus == 2) {
-											dev_data[i].devWorkStatus= "报废";
-										} else if (dev_data[i].devWorkStatus == 3) {
-											dev_data[i].devWorkStatus= "故障";
-										} else if (dev_data[i].devWorkStatus == 4) {
-											dev_data[i].devWorkStatus= "维修";
-										} else if (dev_data[i].devWorkStatus == 5) {
-											dev_data[i].devWorkStatus="待报废";
-										}
-							}
+							
 							// var s ="";
 								
 							// for (var p in dev_data[0]) {
 							// 	s= s+"n "+p+": "+dev_data[0][p];
 							// }
 							// alert(s);
-							var temp_check = document.getElementById('temp_check').innerHTML;
-							document.getElementById('c_euq').innerHTML = template(temp_check,{list:dev_data});
+							var temp_check2 = document.getElementById('temp_check2').innerHTML;
+							document.getElementById('c_euq').innerHTML = template(temp_check2,{list:dev_data});
 						}
 					 },
 					 error: function(xhr,type,errorThrown){
@@ -59,6 +41,72 @@ function check_equ(request_url){
 					 }
 				 });
 			});
+}
+
+function more_arrange(enId, request_url) { //type=0 报废申请的更多  type=1 购置申请的更多   type =2 报修申请的更多
+	mui.init();
+	mui.plusReady(function() {
+		var self = plus.webview.currentWebview();
+		var user = self.user;
+
+		// var s ="";
+
+		// for (var p in user) {
+		// 	s= s+"n "+p+": "+user[p];
+		// }
+		// alert(s);
+		// alert(dev_id);
+		var arrange_load_url = request_url + "queryEnrolByEnId?enId=" + enId;
+		// alert(user.userAuthority);
+		mui.ajax({
+			type: 'GET',
+			url: arrange_load_url,
+			timeout: 10000,
+			dataType: "json",
+			success: function(data) {
+				if ((data.data != null)) {
+					var dev_data = data.data[0];
+					var s = "";
+					//alert(dev_data);
+					for (var p in dev_data) {
+						if (p == "enId") {
+							s = s + "\n" + "约球ID: " + dev_data.enId;
+						}else if(p == "teamId"){
+							s = s + "\n" + "球队Id: " + dev_data.teamId;
+						}else if(p == "teamName"){
+							s = s + "\n" + "球队名称: " + dev_data.teamName;
+						}else if(p == "playerNum"){
+							s = s + "\n" + "预计参加人数: " + dev_data.playerNum;
+						}else if(p == "fieldName"){
+							s = s + "\n" + "暂定地点: " + dev_data.fieldName;
+						}else if(p == "time"){
+							s = s + "\n" + "预定时间:" + dev_data.time;
+						}else if(p == "goPlayerNum"){
+							s = s + "\n" + "已报名人数: " + dev_data.goPlayerNum;
+						}else if(p == "isNeedReferee"){
+							if(dev_data.isNeedReferee == 0){
+								s = s + "\n" + "不需要裁判";
+							}else{
+								s = s + "\n" + "需要裁判";
+							}
+						}else if(p == "isShowing"){
+							if(dev_data.isShowing == 0){
+								s = s + "\n" + "尚未发布";
+							}else{
+								s = s + "\n" + "已发布";
+							}
+						}
+						
+					}
+					alert(s);
+				}
+				// alert(data.message);
+			},
+			error: function(xhr, type, errorThrown) {
+				mui.toast("服务器内部出错！");
+			}
+		});
+	});
 }
 
 function more(dev_data_num,request_url){

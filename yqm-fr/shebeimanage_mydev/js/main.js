@@ -159,12 +159,12 @@ function to_checkEquipment(user) {
 					var team = new Array();
 					team = data.data;
 				}
-				 var s ="";
+	// 			 var s ="";
 	
-				 // for (var p in team[0]) {
-				 // 	s= s+"n "+p+": "+team[0][p];
-				 // }
-				 // alert(s);
+	// 			  for (var p in team[0]) {
+	// 			  	s= s+"n "+p+": "+team[0][p];
+	// 			  }
+	// 			  alert(s);
 	
 				if (data.code == 0) {
 					mui.toast(data.message);

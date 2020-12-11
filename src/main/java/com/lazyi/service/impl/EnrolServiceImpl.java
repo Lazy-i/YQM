@@ -2,7 +2,11 @@ package com.lazyi.service.impl;
 
 import com.lazyi.mapper.EnPlayerMapper;
 import com.lazyi.mapper.EnrolMapper;
+import com.lazyi.mapper.PlayerMapper;
+import com.lazyi.mapper.TeamMapper;
 import com.lazyi.pojo.Enrol;
+import com.lazyi.pojo.Player;
+import com.lazyi.pojo.Team;
 import com.lazyi.service.EnrolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +23,12 @@ public class EnrolServiceImpl implements EnrolService {
 
     @Autowired
     private EnPlayerMapper enPlayerMapper;
+
+    @Autowired
+    private TeamMapper teamMapper;
+
+    @Autowired
+    private PlayerMapper playerMapper;
 
     @Override
     public List<Enrol> queryEnrolList() throws Exception {
@@ -77,5 +87,12 @@ public class EnrolServiceImpl implements EnrolService {
     @Override
     public void deleteEnrol(Integer enId) throws Exception {
         enrolMapper.deleteEnrol(enId);
+    }
+
+    @Override
+    public List<Player> queryPlayerTelNumberByTeamId(Integer teamId) throws Exception {
+        List<Team> teams = teamMapper.queryTeamById(teamId);
+        List<Player> players = playerMapper.queryPlayerById(teams.get(0).getCaptainId());
+        return players;
     }
 }

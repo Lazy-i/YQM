@@ -16,21 +16,19 @@
 			localStorage.setItem('request_url', 'http://81.70.31.152:8001/api/'); //前半部分固定URL
 		</script>
 		<script type="text/html" id="temp_stable_wzj">
-			<h>可租用设备</h>
+			<h>比赛记录单</h>
 			<ul class="mui-table-view">
 			<% for(var i = 0;i < list.length;i++){ %>
-					<% if(list[i].devStatus == 1 && list[i].devWorkStatus == 1 && list[i].devId!=-1) {%>
 					<div class="mui-table-view">
-						<li class="mui-table-view-cell"><%= list[i].devName%></li>
-							<button style="position: absolute;top:6px;right:120px;height:28px;line-height: 15px;" onclick="more(<%= list[i].devId%>,request_url)">更多</button>
-							<button style="position: absolute;top:6px;right:5px;height:28px;line-height: 15px;width: 110px;" onclick="search_s(<%= list[i].devId%> ,request_url)">申请租借设备</button>
+						<li class="mui-table-view-cell"><%= list[i].teamName%></li>
+							<button style="position: absolute;top:6px;right:65px;height:28px;line-height: 15px;" onclick="more(<%= list[i].enId%>,request_url)">更多</button>
+							<button style="position: absolute;top:6px;right:5px;height:28px;line-height: 15px;" onclick="search_s(<%= list[i].teamId%> ,request_url)">联系</button>
 					</div>	
-					<% } %>
 				<% } %>
 			</ul>
 		</script>
 		
-		<script type="text/html" id="temp_stable_yzj">
+		<!-- <script type="text/html" id="temp_stable_yzj">
 			<h>已租借出的设备</h>
 			<ul class="mui-table-view">
 			<% for(var i = 0;i < list.length;i++){ %>
@@ -51,7 +49,7 @@
 					</div>	
 				<% } %>
 			</ul>
-		</script>
+		</script> -->
 		<!-- script type="text/html" id="temp_stable">
 			< for(var i = 0;i < list.length;i++){ %>
 								

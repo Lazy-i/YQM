@@ -2,6 +2,7 @@ package com.lazyi.service;
 
 
 import com.lazyi.pojo.Enrol;
+import com.lazyi.pojo.Player;
 
 import java.util.List;
 
@@ -24,4 +25,6 @@ public interface EnrolService extends Service {
     List<Enrol> showEnrol(Integer enId,Integer isShowing) throws Exception;
 
     void deleteEnrol(Integer enId) throws Exception;
+
+    List<Player> queryPlayerTelNumberByTeamId(Integer teamId) throws Exception;
 }
