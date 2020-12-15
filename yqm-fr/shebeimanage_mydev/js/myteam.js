@@ -162,3 +162,12 @@ function my_team(request_url) {
 			});
 		});
 	}
+	function to_team_add(user) {
+		mui.init();
+		mui.openWindow({
+			url: 'addteam.html',
+			extras: {
+				user: user,
+			}
+		});
+	}

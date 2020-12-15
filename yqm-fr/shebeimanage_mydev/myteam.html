@@ -21,6 +21,10 @@
 				        return true;
 				    }
 			});
+			mui.plusReady(function() {
+				var self = plus.webview.currentWebview();
+				user = self.user;
+			});
 			localStorage.setItem('request_url', 'http://81.70.31.152:8001/api/'); //前半部分固定URL
 		</script>
 		<script type="text/html" id="temp_now_shen">
@@ -51,7 +55,12 @@
 		<h>我加入的球队</h>
 		<div id="shen_now"></div>
 		<div class="mui-content" style="margin-top:-35px;"></div>
-		
+		<nav class="mui-bar mui-bar-tab" style="touch-action: none;" onclick = "to_team_add(request_url)">
+			<a class="mui-tab-item" href="#tabbar-with-search">
+				<span class="mui-icon mui-icon-loop"></span>
+				<span class="mui-tab-label">新建球队</span>
+			</a>
+		</nav>
 		<script type="text/javascript">
 			mui.init()
 			var request_url = localStorage.getItem('request_url');
