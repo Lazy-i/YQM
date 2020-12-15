@@ -102,7 +102,7 @@ function yes_arrange(enId, request_url) { ///////////type=0 报废 type==1 报�
 		mui.ajax({
 			type: 'GET',
 			url: arrange_yes_url_0,
-			timeout: 10000,
+			timeout: 10000, 
 			dataType: "json",
 			success: function(data) {
 
